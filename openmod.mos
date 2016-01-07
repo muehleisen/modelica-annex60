@@ -1,0 +1,16 @@
+loadModel(Modelica, {"3.2"}); 
+getErrorString();
+loadModel(Annex60); 
+getErrorString();
+
+// Test models
+
+simulate(Annex60.Fluid.HeatExchangers.Examples.AirHeater_T);
+simulate(Annex60.Fluid.HeatExchangers.Examples.WaterHeater_T);
+
+simulate(Annex60.Fluid.HeatExchangers.Examples.AirHeater_u);
+simulate(Annex60.Fluid.HeatExchangers.Examples.WaterHeater_u);
+//getErrorString();
+
+system("rm -f Annex60_* Annex60.* Modelica_*");
+
