@@ -1,13 +1,13 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.Records;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.Records;
 record General "General parameters of the borefield"
   extends Modelica.Icons.Record;
   import SI = Modelica.SIunits;
 
   parameter String pathMod=
-      "IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.Records.General"
+      "Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.Records.General"
     "Modelica record path";
   parameter String pathCom=Modelica.Utilities.Files.loadResource(
-      "modelica://IDEAS/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/Records/General.mo")
+      "modelica://Annex60/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/Records/General.mo")
     "Computer record path";
 
   parameter Boolean singleUTube = true

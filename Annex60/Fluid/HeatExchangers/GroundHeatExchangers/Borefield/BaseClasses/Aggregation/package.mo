@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses;
 package Aggregation 
     extends Modelica.Icons.Package;
 

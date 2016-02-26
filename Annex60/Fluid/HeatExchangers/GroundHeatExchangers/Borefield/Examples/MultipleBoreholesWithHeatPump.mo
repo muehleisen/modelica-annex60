@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Examples;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Examples;
 model MultipleBoreholesWithHeatPump
   "Model of a borefield with axb borefield and a constant heat injection rate"
 
@@ -33,7 +33,7 @@ model MultipleBoreholesWithHeatPump
   Modelica.Fluid.Sources.Boundary_pT boundary(          redeclare package
       Medium = Medium, nPorts=1)
     annotation (Placement(transformation(extent={{-94,-68},{-74,-48}})));
-  IDEAS.Fluid.Production.HP_WaterWater_OnOff heatPumpOnOff(
+  Annex60.Fluid.Production.HP_WaterWater_OnOff heatPumpOnOff(
     redeclare package Medium1 = Medium,
     redeclare package Medium2 = Medium,
     onOff=true,
@@ -41,7 +41,7 @@ model MultipleBoreholesWithHeatPump
     use_onOffSignal=true,
     P_the_nominal=bfData.PThe_nominal/2,
     redeclare
-      IDEAS.Fluid.Production.Data.PerformanceMaps.VitoCal300GBWS301dotA45
+      Annex60.Fluid.Production.Data.PerformanceMaps.VitoCal300GBWS301dotA45
       heatPumpData)  annotation (Placement(transformation(
         extent={{15,-17},{-15,17}},
         rotation=180,
@@ -135,6 +135,6 @@ equation
             100,100}}), graphics),
     experiment(StopTime=1.7e+006, __Dymola_NumberOfIntervals=100),
     __Dymola_experimentSetupOutput,
-    __Dymola_Commands(file="../../IDEAS/IDEAS/Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Examples/MultipleBoreholesWithHeatPump.mos"
+    __Dymola_Commands(file="../../Annex60/Annex60/Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Examples/MultipleBoreholesWithHeatPump.mos"
         "Simulate and plot"));
 end MultipleBoreholesWithHeatPump;

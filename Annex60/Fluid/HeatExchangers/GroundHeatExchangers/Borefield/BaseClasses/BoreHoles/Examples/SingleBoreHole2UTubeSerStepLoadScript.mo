@@ -1,7 +1,7 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples;
 model SingleBoreHole2UTubeSerStepLoadScript
   extends
-    IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.Interfaces.partial_SingleBoreHoleStepLoad(
+    Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.Interfaces.partial_SingleBoreHoleStepLoad(
      redeclare replaceable Data.GeneralData.GeneralTrt2UTube gen,
     redeclare replaceable Data.FillingData.FillingTrt fil,
     redeclare replaceable Data.SoilData.SoilTrt soi);

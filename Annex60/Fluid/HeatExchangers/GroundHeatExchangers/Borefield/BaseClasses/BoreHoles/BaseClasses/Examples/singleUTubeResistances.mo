@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.Examples;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.Examples;
 model singleUTubeResistances "Validation of singleUTubeResistance by comparing the obtained Rb and Ra values to the values obtained by EED. The values should be close to parameters _ref. 
   The differences are due to numerical noise, as the same formula's give better results in Python."
   extends Modelica.Icons.Example;
@@ -43,7 +43,7 @@ model singleUTubeResistances "Validation of singleUTubeResistance by comparing t
   parameter Real RCondPipe_ref =  0.07868;
 equation
     (x, Rgb_val, Rgg_val, RCondGro_val) =
-    IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.singleUTubeResistances(hSeg=hSeg,
+    Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.singleUTubeResistances(hSeg=hSeg,
     rBor=rBor,
     rTub=rTub,
     eTub=eTub,

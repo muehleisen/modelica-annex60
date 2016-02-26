@@ -1,28 +1,28 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.Examples;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.Examples;
 model SingleBoreHolesInSerie "Test for the SingleBoreHole model"
-  import IDEAS;
+  import Annex60;
   extends Modelica.Icons.Example;
   package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater;
 
-  IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.SingleBoreHolesInSerie
+  Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.SingleBoreHolesInSerie
     seg(
     redeclare package Medium = Medium,
     soi=Data.SoilData.SandStone(),
     fil=Data.FillingData.Bentonite(),
-    gen=IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData.c8x1_h110_b5_d3600_T283())
+    gen=Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData.c8x1_h110_b5_d3600_T283())
             annotation (Placement(transformation(
         extent={{-13,-13},{13,13}},
         rotation=270,
         origin={9,33})));
 
-  IDEAS.Fluid.Sources.MassFlowSource_T sou_1(
+  Annex60.Fluid.Sources.MassFlowSource_T sou_1(
     redeclare package Medium = Medium,
     nPorts=1,
     use_T_in=false,
     m_flow=1,
     T=303.15) annotation (Placement(transformation(extent={{-60,40},{-40,
             60}}, rotation=0)));
-  IDEAS.Fluid.Sources.Boundary_pT sin_2(
+  Annex60.Fluid.Sources.Boundary_pT sin_2(
     redeclare package Medium = Medium,
     use_p_in=false,
     use_T_in=false,
@@ -42,7 +42,7 @@ equation
       smooth=Smooth.None));
   annotation (
     __Dymola_Commands(file=
-          "modelica://IDEAS/Resources/Scripts/Dymola/Fluid/HeatExchangers/Boreholes/BaseClasses/Examples/BoreholeSegment.mos"
+          "modelica://Annex60/Resources/Scripts/Dymola/Fluid/HeatExchangers/Boreholes/BaseClasses/Examples/BoreholeSegment.mos"
         "Simulate and plot"),
     Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-100,-100},{100,
             100}}), graphics),

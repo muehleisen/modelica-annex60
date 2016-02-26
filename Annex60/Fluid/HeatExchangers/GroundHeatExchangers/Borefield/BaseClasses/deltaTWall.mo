@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses;
 function deltaTWall
   "Calculates the temperature difference from the inital temperature of the borehole wall, due to the Load array."
   extends Aggregation.Interface.partialAggFunction;

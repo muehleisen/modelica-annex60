@@ -1,16 +1,16 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface;
 partial model PartialSingleBoreHole "Single borehole heat exchanger"
 //   replaceable package Medium =
 //       Modelica.Media.Interfaces.PartialMedium "Medium in the component"
 //       annotation (choicesAllMatching = true);
   extends PartialBoreHoleElement;
   extends PartialTWall;
-   extends IDEAS.Fluid.Interfaces.PartialTwoPortInterface;
+   extends Annex60.Fluid.Interfaces.PartialTwoPortInterface;
   //  (redeclare package
 //       Medium =                                                                                   Medium);
-  extends IDEAS.Fluid.Interfaces.TwoPortFlowResistanceParameters(
+  extends Annex60.Fluid.Interfaces.TwoPortFlowResistanceParameters(
       computeFlowResistance=false, linearizeFlowResistance=false);
-  extends IDEAS.Fluid.Interfaces.LumpedVolumeDeclarations(T_start=gen.T_start);
+  extends Annex60.Fluid.Interfaces.LumpedVolumeDeclarations(T_start=gen.T_start);
 
   Modelica.SIunits.Temperature TWallAve "Average borehole temperature";
   parameter Modelica.SIunits.MassFlowRate m_flow_nominal

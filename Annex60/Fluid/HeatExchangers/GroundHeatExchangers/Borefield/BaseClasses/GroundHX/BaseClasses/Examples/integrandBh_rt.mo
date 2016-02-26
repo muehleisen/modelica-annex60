@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.BaseClasses.Examples;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.BaseClasses.Examples;
 model integrandBh_rt
   extends Modelica.Icons.Example;
 
@@ -10,7 +10,7 @@ algorithm
   if time < 0.007 then
     int := 0;
   else
-    int := IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.BaseClasses.integrandBh_rt(
+    int := Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.BaseClasses.integrandBh_rt(
       r=0.055,
       D=100,
       u=time*lim);

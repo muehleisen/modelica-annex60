@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.Examples;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.Examples;
 model internalHEX2UTube
   "Comparison of the effective borehole thermal resistance from the thermal network of Bauer et al. with the resistance calculated by doubleUTubeResistances (ref)"
 
@@ -14,9 +14,9 @@ model internalHEX2UTube
     m4_flow_nominal=intHex.gen.m_flow_nominal_bh,
     dp3_nominal=10,
     dp4_nominal=10,
-    soi=IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.SoilData.SoilTrt(),
-    fil=IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.FillingData.FillingTrt(),
-    gen=IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData.GeneralTrt2(),
+    soi=Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.SoilData.SoilTrt(),
+    fil=Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.FillingData.FillingTrt(),
+    gen=Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData.GeneralTrt2(),
     dynFil=true,
     T_start=285.15)
     annotation (Placement(transformation(extent={{-10,-12},{10,10}})));
@@ -35,10 +35,10 @@ model internalHEX2UTube
   Sources.FixedBoundary bou(nPorts=4, redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-60,-14},{-40,-34}})));
   Real Rb_sim = ((senTem.T + senTem1.T + senTem2.T + senTem3.T)/4 - intHex.port.T)/max(-intHex.port.Q_flow / intHex.gen.hSeg,1);
-  IDEAS.Fluid.Sensors.TemperatureTwoPort senTem(redeclare package Medium =
+  Annex60.Fluid.Sensors.TemperatureTwoPort senTem(redeclare package Medium =
         Medium, m_flow_nominal=intHex.gen.m_flow_nominal_bh)
     annotation (Placement(transformation(extent={{16,2},{28,14}})));
-  IDEAS.Fluid.Sensors.TemperatureTwoPort senTem1(redeclare package Medium =
+  Annex60.Fluid.Sensors.TemperatureTwoPort senTem1(redeclare package Medium =
         Medium, m_flow_nominal=intHex.gen.m_flow_nominal_bh)
     annotation (Placement(transformation(extent={{-24,-12},{-36,0}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=Rb_sim)
@@ -47,10 +47,10 @@ model internalHEX2UTube
     annotation (Placement(transformation(extent={{-10,-80},{10,-60}})));
   Modelica.Blocks.Math.Add error(k2=-1)
     annotation (Placement(transformation(extent={{22,-70},{42,-50}})));
-  IDEAS.Fluid.Sensors.TemperatureTwoPort senTem2(redeclare package Medium =
+  Annex60.Fluid.Sensors.TemperatureTwoPort senTem2(redeclare package Medium =
         Medium, m_flow_nominal=intHex.gen.m_flow_nominal_bh)
     annotation (Placement(transformation(extent={{-14,-22},{-26,-10}})));
-  IDEAS.Fluid.Sensors.TemperatureTwoPort senTem3(
+  Annex60.Fluid.Sensors.TemperatureTwoPort senTem3(
                                                 redeclare package Medium =
         Medium, m_flow_nominal=intHex.gen.m_flow_nominal_bh)
     annotation (Placement(transformation(extent={{16,-22},{28,-10}})));

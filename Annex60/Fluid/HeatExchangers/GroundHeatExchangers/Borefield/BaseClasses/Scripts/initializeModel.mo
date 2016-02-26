@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts;
 function initializeModel
   extends Modelica.Icons.Function;
 
@@ -8,14 +8,14 @@ function initializeModel
 
   output String sha "Pseudo SHA code (unique code) of the record soi and gen";
   output Real[1,gen.tBre_d + 1] TResSho
-    "Short term response temperature vector of the borefield obtained calling the model IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.SingleBoreHoleSerStepLoadScript";
+    "Short term response temperature vector of the borefield obtained calling the model Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.SingleBoreHoleSerStepLoadScript";
   output Boolean existShoTerRes
     "True if the aggregation matrix has already been calculated and stored in the simulation folder";
 
 protected
   String pathSave "Path of the saving folder";
 algorithm
-  translateModel("IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts.shaBorefieldRecords");
+  translateModel("Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts.shaBorefieldRecords");
 
   // --------------- Generate SHA-code and path
   sha := shaBorefieldRecords(

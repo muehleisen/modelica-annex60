@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface;
 partial model PartialTWall
     parameter Boolean use_TWall = false
     "Set to true if an input is used for the borehole wall temperature instead of computing it wihtin the model."

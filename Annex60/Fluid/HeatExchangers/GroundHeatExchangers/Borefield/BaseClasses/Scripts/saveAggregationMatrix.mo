@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts;
 function saveAggregationMatrix
   extends Aggregation.Interface.partialAggFunction;
 
@@ -21,7 +21,7 @@ function saveAggregationMatrix
     "Quasi steady state temperature";
 
   output Real[1,gen.tBre_d + 1] TResSho
-    "Short term response temperature vector of the borefield obtained calling the model IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.SingleBoreHoleSerStepLoadScript";
+    "Short term response temperature vector of the borefield obtained calling the model Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.SingleBoreHoleSerStepLoadScript";
   output String sha "Pseudo SHA code (unique code) of the record soi and gen";
 
   output Boolean existShoTerRes
@@ -67,7 +67,7 @@ algorithm
   assert(existShoTerRes, " \n
 ************************************************************************************************************************ \n 
 The borefield model with this BfData record has not yet been initialized. Please firstly run the following command in the command log: \n"
-     + "IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts.initializeModel("
+     + "Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts.initializeModel("
      + "soi=" + soi.pathMod + "(), " + "fil="
      + fil.pathMod + "()," + "gen=" + gen.pathMod + "())" + "\n
 ************************************************************************************************************************ \n ");

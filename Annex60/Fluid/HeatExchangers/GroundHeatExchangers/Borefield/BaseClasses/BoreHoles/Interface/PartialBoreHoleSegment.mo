@@ -1,11 +1,11 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface;
 partial model PartialBoreHoleSegment
   extends PartialBoreHoleElement;
-  extends IDEAS.Fluid.Interfaces.TwoPortFlowResistanceParameters(
+  extends Annex60.Fluid.Interfaces.TwoPortFlowResistanceParameters(
       computeFlowResistance=false, linearizeFlowResistance=false);
-  extends IDEAS.Fluid.Interfaces.LumpedVolumeDeclarations;
+  extends Annex60.Fluid.Interfaces.LumpedVolumeDeclarations;
   extends
-    IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface.PartialTWall;
+    Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface.PartialTWall;
   parameter Modelica.SIunits.Temperature TExt_start=T_start
     "Initial far field temperature"
     annotation (Dialog(tab="Boundary conditions",group="T_start: ground"));

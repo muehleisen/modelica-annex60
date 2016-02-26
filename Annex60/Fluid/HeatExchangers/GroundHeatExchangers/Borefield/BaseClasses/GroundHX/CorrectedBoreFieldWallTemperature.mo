@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX;
 function CorrectedBoreFieldWallTemperature "Return the corrected average borehole wall temperature of the whole borefield in function of the discrete time step t_d.
   The correction is from t=0 till t_d = tBre. Input TResSho gives the vector with the correct temperatures for this time period"
   extends BaseClasses.partialBoreFieldTemperature;

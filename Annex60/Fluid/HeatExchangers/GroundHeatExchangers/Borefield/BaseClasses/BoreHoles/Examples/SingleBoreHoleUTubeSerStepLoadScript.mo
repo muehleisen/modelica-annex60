@@ -1,8 +1,8 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples;
 model SingleBoreHoleUTubeSerStepLoadScript
   "SingleBoreHoleSer with step input load "
   extends
-    IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.Interfaces.partial_SingleBoreHoleStepLoad;
+    Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.Interfaces.partial_SingleBoreHoleStepLoad;
 
   replaceable SingleBoreHolesInSerie borHolSer(
     redeclare package Medium = Medium,
@@ -34,7 +34,7 @@ equation
       smooth=Smooth.None));
   annotation (
     __Dymola_Commands(file=
-          "modelica://IDEAS/Resources/Scripts/Dymola/Fluid/HeatExchangers/Boreholes/Examples/UTube.mos"
+          "modelica://Annex60/Resources/Scripts/Dymola/Fluid/HeatExchangers/Boreholes/Examples/UTube.mos"
         "Simulate and plot"),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}), graphics),

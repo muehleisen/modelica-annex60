@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation.BaseClasses;
 partial model partial_trtValidation
   extends Examples.borefield8x1(
     pum(

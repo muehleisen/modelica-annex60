@@ -1,10 +1,10 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.FillingData;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.FillingData;
 record Bentonite_validation
   extends Records.Filling(
     pathMod=
-        "IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.FillingData.Bentonite",
+        "Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.FillingData.Bentonite",
     pathCom=Modelica.Utilities.Files.loadResource(
-        "modelica://IDEAS/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/FillingData/Bentonite.mo"),
+        "modelica://Annex60/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/FillingData/Bentonite.mo"),
     k=0.73,
     d=2000,
     c=2000);

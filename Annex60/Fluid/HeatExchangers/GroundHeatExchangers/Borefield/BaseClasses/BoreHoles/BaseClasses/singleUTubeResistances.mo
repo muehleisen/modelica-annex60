@@ -1,9 +1,9 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses;
 function singleUTubeResistances
   "Thermal resistances for single U-tube, according to Bauer et al. (2011)"
   // FIXME: if python is used, the results are slightly different. I guess the Dymola resultion is quite low.
   extends
-    IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.partialBoreholeResistances;
+    Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.partialBoreholeResistances;
 
   // Outputs
   output Modelica.SIunits.ThermalResistance Rgb
@@ -90,7 +90,7 @@ algorithm
   "Maximum number of iterations exceeded. Check the borehole geometry.
   The tubes may be too close to the borehole wall.
   Input to the function 
-  IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.singleUTubeResistances
+  Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.singleUTubeResistances
   is
            hSeg = " + String(hSeg) + " m
            rBor = " + String(rBor) + " m

@@ -1,11 +1,11 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData;
 record c1x1_h110_b5_d3600_T283
   "Line configuration of 8 boreholes of 110 meter with a spacing of 5.5 meter from each other. Initial temperature is 283K and the discretization is 3600 seconds"
   extends Records.General(
     pathMod=
-        "IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData.c8x1_h110_b5_d3600_T283",
+        "Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData.c8x1_h110_b5_d3600_T283",
     pathCom=Modelica.Utilities.Files.loadResource(
-        "modelica://IDEAS/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/GeneralData/c8x1_h110_b5_d3600_T283.mo"),
+        "modelica://Annex60/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/GeneralData/c8x1_h110_b5_d3600_T283.mo"),
     singleUTube = true,
     m_flow_nominal_bh=0.3,
     T_start=283.15,

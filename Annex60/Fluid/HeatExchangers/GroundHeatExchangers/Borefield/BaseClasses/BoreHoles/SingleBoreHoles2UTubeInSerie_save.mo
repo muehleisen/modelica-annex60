@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles;
 model SingleBoreHoles2UTubeInSerie_save
   "Double U-tube borehole heat exchanger model. If more than one borehole is given, they are assumed to be connected in series"
 
@@ -226,19 +226,19 @@ The default setting uses the same temperature for the soil and the filling mater
 <h4>Implementation</h4>
 <p>
 horizontal layer is modeled using an instance of
-<a href=\"modelica://IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.BoreholeSegment\">
-IDEAS.HeatExchangers.Fluid.Boreholes.BaseClasses.BoreholeSegment</a>.
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.BoreholeSegment\">
+Annex60.HeatExchangers.Fluid.Boreholes.BaseClasses.BoreholeSegment</a>.
 This model is composed of the model
-<a href=\"modelica://IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.HexInternalElement\">
-IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.HexInternalElement</a> which computes
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.HexInternalElement\">
+Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.HexInternalElement</a> which computes
 the heat transfer in the pipes and the borehole filling,
 of the model
-<a href=\"modelica://IDEAS.HeatTransfer.Conduction.SingleLayerCylinder\">
-IDEAS.HeatTransfer.Conduction.SingleLayerCylinder</a> which computes
+<a href=\"modelica://Annex60.HeatTransfer.Conduction.SingleLayerCylinder\">
+Annex60.HeatTransfer.Conduction.SingleLayerCylinder</a> which computes
 the heat transfer in the soil, and
 of the model
-<a href=\"modelica://IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.TemperatureBoundaryCondition\">
-IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.TemperatureBoundaryCondition</a> which computes
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.TemperatureBoundaryCondition\">
+Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.TemperatureBoundaryCondition</a> which computes
 the far-field temperature boundary condition.
 </p>
 </html>", revisions="<html>

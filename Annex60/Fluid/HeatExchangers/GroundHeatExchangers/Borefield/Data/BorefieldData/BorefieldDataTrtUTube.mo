@@ -1,8 +1,8 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.BorefieldData;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.BorefieldData;
 record BorefieldDataTrtUTube =
                           Records.BorefieldData (
-    pathMod = "IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.BorefieldData.BorefieldDataTrtUTube",
-    pathCom = Modelica.Utilities.Files.loadResource("modelica://IDEAS/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/BorefieldData/BorefieldDataTrtUTube.mo"),
+    pathMod = "Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.BorefieldData.BorefieldDataTrtUTube",
+    pathCom = Modelica.Utilities.Files.loadResource("modelica://Annex60/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/BorefieldData/BorefieldDataTrtUTube.mo"),
     redeclare replaceable record Soi =
         SoilData.SoilTrt,
     redeclare replaceable record Fil =

@@ -1,8 +1,8 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses;
 function doubleUTubeResistances
   "Thermal resistances for double U-tube, according to Zeng et al. (2003) and Bauer et al (2010)"
   extends
-    IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.partialBoreholeResistances;
+    Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.partialBoreholeResistances;
 
     // (                                                                                               kSoi=2.19, kFil=2.32, kTub=0.38,sha=0.0279*1.87, rBor=0.15/2,rTub=0.025,eTub=0.0029,hSeg=40,use_Rb=false,Rb=0);
 
@@ -87,7 +87,7 @@ R13 :=1/2/pi/kFil*(log(rBor/(2*sha)) - (kFil - kSoi)/(kFil +
    "Maximum number of iterations exceeded. Check the borehole geometry.
    The tubes may be too close to the borehole wall.
    Input to the function
-   IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.doubleUTubeResistances
+   Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.doubleUTubeResistances
    is
             hSeg = " + String(hSeg) + " m
             rBor = " + String(rBor) + " m

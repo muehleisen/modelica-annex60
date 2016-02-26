@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.Examples;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.Examples;
 model singleLayerCylinder_MLB
   "Comparison of the CylindricalGroundLayer with the Modelica Buildings Library"
   extends Modelica.Icons.Example;

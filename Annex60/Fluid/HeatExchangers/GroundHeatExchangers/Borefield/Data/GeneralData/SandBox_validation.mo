@@ -1,9 +1,9 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData;
 record SandBox_validation
   "General record for validation bore field using sand box experiment"
 extends Records.General(
-    pathMod="IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData.SandBox_validation",
-    pathCom=Modelica.Utilities.Files.loadResource("modelica://IDEAS/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/GeneralData/SandBox_validation.mo"),
+    pathMod="Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData.SandBox_validation",
+    pathCom=Modelica.Utilities.Files.loadResource("modelica://Annex60/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/GeneralData/SandBox_validation.mo"),
     singleUTube = true,
     m_flow_nominal_bh=0.197/998*1000,
     rBor=0.063,

@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.Interfaces;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.Interfaces;
 partial model partial_SingleBoreHoleStepLoad
   "SingleBoreHoleSer with step input load "
 
@@ -19,14 +19,14 @@ partial model partial_SingleBoreHoleStepLoad
     Data.Records.General "General charachteristic of the borefield"
     annotation (Placement(transformation(extent={{46,-76},{56,-66}})));
 
-  IDEAS.Fluid.Sources.Boundary_ph sin(redeclare package Medium =
+  Annex60.Fluid.Sources.Boundary_ph sin(redeclare package Medium =
         Medium, nPorts=1) "Sink"
     annotation (Placement(transformation(extent={{22,-34},{34,-22}})));
 
   Modelica.Blocks.Sources.Step step(height=1)
     annotation (Placement(transformation(extent={{48,-18},{36,-6}})));
 
-  IDEAS.Fluid.HeatExchangers.HeaterCooler_u hea(
+  Annex60.Fluid.HeatExchangers.HeaterCooler_u hea(
     redeclare package Medium = Medium,
     m_flow_nominal=gen.m_flow_nominal_bh,
     dp_nominal=10000,
@@ -93,7 +93,7 @@ equation
 
   annotation (
     __Dymola_Commands(file=
-          "modelica://IDEAS/Resources/Scripts/Dymola/Fluid/HeatExchangers/Boreholes/Examples/UTube.mos"
+          "modelica://Annex60/Resources/Scripts/Dymola/Fluid/HeatExchangers/Boreholes/Examples/UTube.mos"
         "Simulate and plot"),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}),

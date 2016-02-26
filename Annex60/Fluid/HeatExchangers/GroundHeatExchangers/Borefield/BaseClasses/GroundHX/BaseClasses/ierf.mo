@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.BaseClasses;
 function ierf "Integral of erf(u) for u=0 till u"
   extends Modelica.Math.Nonlinear.Interfaces.partialScalarFunction;
 

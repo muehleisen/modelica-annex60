@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.Records;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.Records;
 record BorefieldData
   "Record containing all the subrecords which describe all parameter values of the borefield"
   extends Modelica.Icons.Record;
@@ -23,10 +23,10 @@ record BorefieldData
     "Nominal thermal power of the borefield";
 
   parameter String pathMod=
-      "IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.Records.BorefieldData"
+      "Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.Records.BorefieldData"
     "Modelica path of the record";
   parameter String pathCom=Modelica.Utilities.Files.loadResource(
-      "modelica://IDEAS/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/Records")
+      "modelica://Annex60/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/Records")
     "Computer path of the record";
 
   annotation (Documentation(info="<html>

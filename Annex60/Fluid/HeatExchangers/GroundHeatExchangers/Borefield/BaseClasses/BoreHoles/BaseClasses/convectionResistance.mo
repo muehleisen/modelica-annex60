@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses;
 function convectionResistance
   "Thermal resistance from the fluid in pipes and the grout zones (Bauer et al. 2011)"
 
@@ -37,7 +37,7 @@ algorithm
 
   // Convection
   h := 0.023*kMed*(cpMed*mueMed/kMed)^(0.35)/(2*rTub_in)*
-    IDEAS.Utilities.Math.Functions.regNonZeroPower(
+    Annex60.Utilities.Math.Functions.regNonZeroPower(
             x=m_flow*k,
             n=0.8,
             delta=0.01*m_flow_nominal*k);

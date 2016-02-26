@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data;
 package FillingData "Library of Filling Data"
 extends Modelica.Icons.Package;
 

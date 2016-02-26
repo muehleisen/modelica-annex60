@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX;
 function BoreFieldWallTemperature
   "Return the borefield mean wall temperature for the discrete time t_d"
   extends BaseClasses.partialBoreFieldTemperature;

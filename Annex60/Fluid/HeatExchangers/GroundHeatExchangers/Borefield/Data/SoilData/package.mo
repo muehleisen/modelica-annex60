@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data;
 package SoilData "Library of Soil Data"
 extends Modelica.Icons.Package;
 

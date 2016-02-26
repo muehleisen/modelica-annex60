@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Validation;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Validation;
 model SandBoxExperiment
   "Comparison of the borehole model with the sandbox experiment. Notice, the temperature difference is due to the fin-effect present in the experiment."
   extends Examples.SingleBoreHoleUTubeSerStepLoad(
@@ -10,7 +10,7 @@ model SandBoxExperiment
     tableName="data",
     fileName=
         Modelica.Utilities.Files.loadResource(
-      "modelica://IDEAS/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/BoreHoles/Validation/SpitlerCstLoad_Time_Tsup_Tret_deltaT.txt"),
+      "modelica://Annex60/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/BoreHoles/Validation/SpitlerCstLoad_Time_Tsup_Tret_deltaT.txt"),
     offset={0,0,0},
     columns={2,3,4})
     annotation (Placement(transformation(extent={{-20,60},{0,80}})));
@@ -32,6 +32,6 @@ Beier, R., Smith, M, Spitler, J, Reference data sets for vertical borehole groun
 <li>January 2015, Damien Picard: first implementation.</li>
 </ul>
 </html>"),
-    __Dymola_Commands(file="modelica://IDEAS/Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/BoreHoles/Validation/SandBoxExperiment.mos"
+    __Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/BoreHoles/Validation/SandBoxExperiment.mos"
         "Simulate and Plot"));
 end SandBoxExperiment;

@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation;
 package BaseClasses 
 
 end BaseClasses;

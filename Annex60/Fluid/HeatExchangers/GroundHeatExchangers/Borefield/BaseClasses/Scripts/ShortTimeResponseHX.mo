@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts;
 function ShortTimeResponseHX
   /* Remark: by calling the function, 3 "true" should appear for: \
       1) translation of model \
@@ -24,8 +24,8 @@ function ShortTimeResponseHX
     "Matrix with the time and the Short-term temperature vectors";
 
 protected
-  final parameter String modelToSimulate= if gen.singleUTube then "IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.SingleBoreHoleUTubeSerStepLoadScript"
- else "IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.SingleBoreHole2UTubeSerStepLoadScript"
+  final parameter String modelToSimulate= if gen.singleUTube then "Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.SingleBoreHoleUTubeSerStepLoadScript"
+ else "Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.SingleBoreHole2UTubeSerStepLoadScript"
     "model to simulate";
 
   String[1] varToStore={"borHolSer.TWallAve"}

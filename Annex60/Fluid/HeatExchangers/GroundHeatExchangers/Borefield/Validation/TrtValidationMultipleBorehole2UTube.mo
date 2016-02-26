@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation;
 model TrtValidationMultipleBorehole2UTube
   extends BaseClasses.partial_trtValidation(
     redeclare replaceable Data.BorefieldData.BorefieldDataTrt2UTube bfData,

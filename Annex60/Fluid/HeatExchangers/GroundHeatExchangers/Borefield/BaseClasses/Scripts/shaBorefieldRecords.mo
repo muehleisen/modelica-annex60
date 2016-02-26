@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts;
 function shaBorefieldRecords
   "Return a pseudo sha code of the combination of the record soi, fil and gen of the borefield"
   extends Modelica.Icons.Function;
@@ -10,9 +10,9 @@ function shaBorefieldRecords
     "Pseudo sha code of the combination of the soi, fil and gen records";
 protected
   Real[3] shaMat=
-    {IDEAS.Utilities.Cryptographics.BaseClasses.sha(soiPath),
-    IDEAS.Utilities.Cryptographics.BaseClasses.sha(filPath),
-    IDEAS.Utilities.Cryptographics.BaseClasses.sha(genPath)};
+    {Annex60.Utilities.Cryptographics.BaseClasses.sha(soiPath),
+    Annex60.Utilities.Cryptographics.BaseClasses.sha(filPath),
+    Annex60.Utilities.Cryptographics.BaseClasses.sha(genPath)};
   Real shaSum = sum(shaMat);
 
   Integer hash_el "Part of the sha-number";

@@ -1,8 +1,8 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData;
 record GeneralSW
   "Solarwind parameters of the geometrical configuration of the borefield"
 extends
-    IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.Records.General(
+    Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.Records.General(
     pathMod="Solarwind.Components.Borefield.General",
     pathCom=Modelica.Utilities.Files.loadResource("modelica://Solarwind/Components/Borefield/General.mo"),
     m_flow_nominal_bh=15/100,

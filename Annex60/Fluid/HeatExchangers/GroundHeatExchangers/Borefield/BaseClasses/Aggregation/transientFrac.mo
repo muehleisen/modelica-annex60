@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation;
 function transientFrac
   "Calculates the transient resistance for each cell of the aggregation matrix"
   extends Interface.partialAggFunction;

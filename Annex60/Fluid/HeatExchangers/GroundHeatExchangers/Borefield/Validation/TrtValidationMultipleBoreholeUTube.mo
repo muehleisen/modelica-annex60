@@ -1,10 +1,10 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation;
 model TrtValidationMultipleBoreholeUTube
   "Validation based on thermal response test"
   extends
-    IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation.BaseClasses.partial_trtValidation(
+    Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation.BaseClasses.partial_trtValidation(
     redeclare replaceable
-      IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.BorefieldData.BorefieldDataTrtUTube
+      Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.BorefieldData.BorefieldDataTrtUTube
       bfData,
     hea(
       Q_flow_nominal=3618,
@@ -26,7 +26,7 @@ First implementation.
 </li>
 </ul>
 </html>"),
-    __Dymola_Commands(file="modelica:/IDEAS/Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Validation/TrtValidationMultipleBoreholeUTube.mos"
+    __Dymola_Commands(file="modelica:/Annex60/Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Validation/TrtValidationMultipleBoreholeUTube.mos"
         "Simulate and plot"),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
             100}})));

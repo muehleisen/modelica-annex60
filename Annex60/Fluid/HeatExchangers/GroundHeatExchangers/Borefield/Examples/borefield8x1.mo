@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Examples;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Examples;
 model borefield8x1
   "Model of a borefield in a 8x1 boreholes line configuration and a constant heat injection rate"
 
@@ -23,7 +23,7 @@ model borefield8x1
     "load for the borefield"
     annotation (Placement(transformation(extent={{26,-18},{40,-4}})));
 
-  IDEAS.Fluid.HeatExchangers.HeaterCooler_u hea(
+  Annex60.Fluid.HeatExchangers.HeaterCooler_u hea(
     redeclare package Medium = Medium,
     dp_nominal=10000,
     show_T=true,
@@ -37,12 +37,12 @@ model borefield8x1
   Modelica.Fluid.Sources.Boundary_pT boundary(          redeclare package
       Medium = Medium, nPorts=1)
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
-  IDEAS.Fluid.Sensors.TemperatureTwoPort senTem_out(
+  Annex60.Fluid.Sensors.TemperatureTwoPort senTem_out(
     redeclare package Medium = Medium,
     m_flow_nominal=bfData.m_flow_nominal,
     T_start=T_start)
     annotation (Placement(transformation(extent={{38,-50},{58,-30}})));
-  IDEAS.Fluid.Movers.FlowControlled_m_flow pum(
+  Annex60.Fluid.Movers.FlowControlled_m_flow pum(
     redeclare package Medium = Medium,
     dynamicBalance=false,
     m_flow_nominal=bfData.m_flow_nominal,

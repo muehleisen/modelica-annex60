@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.BaseClasses;
 function integrandBf_bt
   "Integrand for the mean borehole wall temperature of a borefield. u = integration variable,  y = integrand "
   extends Modelica.Math.Nonlinear.Interfaces.partialScalarFunction;

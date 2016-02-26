@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.Examples;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.Examples;
 function transientFrac "ATTENTION: don't translate this function! otherwise it doesn't work anymore, \\
   because some of the code is not possible to statically translate into c-code!\\
   ATTENTION: first translate transientFrac!

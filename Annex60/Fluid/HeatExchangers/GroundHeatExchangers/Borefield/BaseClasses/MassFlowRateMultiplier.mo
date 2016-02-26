@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses;
 model MassFlowRateMultiplier "Model that multiplies the mass flow rate"
   extends Modelica.Fluid.Interfaces.PartialTwoPort;
 

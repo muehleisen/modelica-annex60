@@ -1,7 +1,7 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation;
 model TrtValidationSingleBoreHolesUTubeInSerie
   extends
-    IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.SingleBoreHoleUTubeSerStepLoad(
+    Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Examples.SingleBoreHoleUTubeSerStepLoad(
     redeclare Data.SoilData.SoilTrt soi,
     redeclare Data.FillingData.FillingTrt fil,
     redeclare Data.GeneralData.GeneralTrtUTube gen,

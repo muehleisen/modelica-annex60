@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Examples.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Examples.BaseClasses;
 model MultipleBoreholesWithHeatPump
   package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
     annotation (__Dymola_choicesAllMatching=true);
@@ -11,7 +11,7 @@ model MultipleBoreholesWithHeatPump
     redeclare package MediumFluid = Medium,
     allowFlowReversal=false,
     use_scaling=true,
-    redeclare IDEAS.Fluid.Production.BaseClasses.VitoCal300GBWS301dotA45
+    redeclare Annex60.Fluid.Production.BaseClasses.VitoCal300GBWS301dotA45
       heatPumpData,
     P_the_nominal=bfData.P_the_nominal/2)
                      annotation (Placement(transformation(

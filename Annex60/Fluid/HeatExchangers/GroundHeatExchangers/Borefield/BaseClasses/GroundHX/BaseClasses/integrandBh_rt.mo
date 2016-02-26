@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.BaseClasses;
 function integrandBh_rt
   "Integrand for the mean temperature of a single borehole @ r from its center. u = integration variable  y = integrand "
   import SI = Modelica.SIunits;

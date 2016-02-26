@@ -1,9 +1,9 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses;
 model InternalHEX2UTube
   "Internal part of a borehole for a double U-Tube configuration. In loop 1, fluid 1 streams from a1 to b1 and comes back from a3 to b3. In loop 2: fluid 2 streams from a2 to b2 and comes back from a4 to b4."
   extends Interface.PartialBoreHoleInternalHEX;
 
-  extends IDEAS.Fluid.Interfaces.HeightPortHeatMassExchanger(
+  extends Annex60.Fluid.Interfaces.HeightPortHeatMassExchanger(
     redeclare final package Medium1 = Medium,
     redeclare final package Medium2 = Medium,
     redeclare final package Medium3 = Medium,
@@ -524,19 +524,19 @@ grout-to-grout resistance
 <i>R<sub>a</sub></i> as defined by Hellstroem (1991)
 using the multipole method.
 The multipole method is implemented in
-<a href=\"modelica://IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.singleUTubeResistances\">
-IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.singleUTubeResistances</a>. 
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.singleUTubeResistances\">
+Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.singleUTubeResistances</a>. 
 The convection resistance is calculated using the 
 Dittus-Boelter correlation
 as implemented in
-<a href=\"modelica://IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.convectionResistance\">
-IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.convectionResistance</a>. 
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.convectionResistance\">
+Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.convectionResistance</a>. 
 </p>
 <p>
 The figure below shows the thermal network set up by Bauer et al. (2010).
 </p>
 <p align=\"center\">
-<img alt=\"image\" src=\"modelica://IDEAS/Resources/Images/Fluid/HeatExchangers/Boreholes/BaseClasses/Bauer_singleUTube.png\"/>
+<img alt=\"image\" src=\"modelica://Annex60/Resources/Images/Fluid/HeatExchangers/Boreholes/BaseClasses/Bauer_singleUTube.png\"/>
 </p>
 <h4>References</h4>
 <p>

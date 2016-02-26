@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses;
 package BoreHoles "Package with borehole heat exchangers"
 extends Modelica.Icons.VariantsPackage;
 

@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.BaseClasses;
 function nbOfLevelAgg
   "Calculate the number of level necessary to aggregate the whole load and set the value of v_max, q_max and rArr"
   extends Modelica.Icons.Function;

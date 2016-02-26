@@ -1,8 +1,8 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses;
 model InternalHEXUTube "Internal part of a borehole for a U-Tube configuration"
   extends Interface.PartialBoreHoleInternalHEX;
 
-  extends IDEAS.Fluid.Interfaces.FourPortHeatMassExchanger(
+  extends Annex60.Fluid.Interfaces.FourPortHeatMassExchanger(
     redeclare final package Medium1 = Medium,
     redeclare final package Medium2 = Medium,
     T1_start=T_start,
@@ -19,7 +19,7 @@ model InternalHEXUTube "Internal part of a borehole for a U-Tube configuration"
       final m_flow_small=m1_flow_small,
       V=gen.volOneLegSeg,
       mSenFac=mSenFac),
-    redeclare IDEAS.Fluid.MixingVolumes.MixingVolume vol2(
+    redeclare Annex60.Fluid.MixingVolumes.MixingVolume vol2(
       final energyDynamics=energyDynamics,
       final massDynamics=massDynamics,
       final prescribedHeatFlowRate=false,
@@ -239,19 +239,19 @@ grout-to-grout resistance
 <i>R<sub>a</sub></i> as defined by Hellstroem (1991)
 using the multipole method.
 The multipole method is implemented in
-<a href=\"modelica://IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.singleUTubeResistances\">
-IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.singleUTubeResistances</a>. 
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.singleUTubeResistances\">
+Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.singleUTubeResistances</a>. 
 The convection resistance is calculated using the 
 Dittus-Boelter correlation
 as implemented in
-<a href=\"modelica://IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.convectionResistance\">
-IDEAS.Fluid.HeatExchangers.Boreholes.BaseClasses.convectionResistance</a>. 
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.convectionResistance\">
+Annex60.Fluid.HeatExchangers.Boreholes.BaseClasses.convectionResistance</a>. 
 </p>
 <p>
 The figure below shows the thermal network set up by Bauer et al. (2010).
 </p>
 <p align=\"center\">
-<img alt=\"image\" src=\"modelica://IDEAS/Resources/Images/Fluid/HeatExchangers/Boreholes/BaseClasses/Bauer_singleUTube.png\"/>
+<img alt=\"image\" src=\"modelica://Annex60/Resources/Images/Fluid/HeatExchangers/Boreholes/BaseClasses/Bauer_singleUTube.png\"/>
 </p>
 <h4>References</h4>
 <p>

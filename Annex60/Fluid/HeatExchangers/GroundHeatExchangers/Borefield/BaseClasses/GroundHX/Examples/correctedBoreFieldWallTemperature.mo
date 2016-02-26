@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.Examples;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.Examples;
 model correctedBoreFieldWallTemperature
   "Test for the function correctedBoreFieldWallTemperature"
   extends Modelica.Icons.Example;

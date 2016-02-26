@@ -1,13 +1,13 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface;
 partial model PartialSingleBoreholeSerie
   extends PartialBoreHoleElement;
   extends PartialTWall;
-   extends IDEAS.Fluid.Interfaces.PartialTwoPortInterface;
+   extends Annex60.Fluid.Interfaces.PartialTwoPortInterface;
   //  (redeclare package
 //       Medium =                                                                                   Medium);
-  extends IDEAS.Fluid.Interfaces.TwoPortFlowResistanceParameters(
+  extends Annex60.Fluid.Interfaces.TwoPortFlowResistanceParameters(
       computeFlowResistance=false, linearizeFlowResistance=false);
-  extends IDEAS.Fluid.Interfaces.LumpedVolumeDeclarations(T_start=gen.T_start);
+  extends Annex60.Fluid.Interfaces.LumpedVolumeDeclarations(T_start=gen.T_start);
 
     replaceable Interface.PartialSingleBoreHole[
                                   gen.nbSer] borHol(

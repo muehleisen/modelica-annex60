@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface;
 partial model PartialBoreHoleElement
   replaceable package Medium = Modelica.Media.Interfaces.PartialMedium
     "Medium in the component" annotation (choicesAllMatching=true);

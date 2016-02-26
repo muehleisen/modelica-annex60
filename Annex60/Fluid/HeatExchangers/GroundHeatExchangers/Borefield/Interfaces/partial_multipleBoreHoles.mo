@@ -1,17 +1,17 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Interfaces;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Interfaces;
 partial model partial_multipleBoreHoles
   "Calculates the average fluid temperature T_fts of the borefield for a given (time dependent) load Q_flow"
   replaceable package Medium = Modelica.Media.Interfaces.PartialMedium
     "Medium in the component" annotation (choicesAllMatching=true);
   // Medium in borefield
-  extends IDEAS.Fluid.Interfaces.PartialTwoPortInterface(
+  extends Annex60.Fluid.Interfaces.PartialTwoPortInterface(
     m_flow_nominal=bfData.m_flow_nominal,
     redeclare package Medium = Medium,
     final allowFlowReversal=false);
 
-  extends IDEAS.Fluid.Interfaces.LumpedVolumeDeclarations(T_start = bfData.gen.T_start,
+  extends Annex60.Fluid.Interfaces.LumpedVolumeDeclarations(T_start = bfData.gen.T_start,
     redeclare package Medium = Medium);
-  extends IDEAS.Fluid.Interfaces.TwoPortFlowResistanceParameters(final
+  extends Annex60.Fluid.Interfaces.TwoPortFlowResistanceParameters(final
       computeFlowResistance=true, dp_nominal=0);
 
   // General parameters of borefield
@@ -88,7 +88,7 @@ initial algorithm
 
   // Initialization of the aggregation matrix and check that the short-term response for the given bfData record has already been calculated
   (kappaMat,rArr,nuMat,TSteSta) :=
-    IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts.saveAggregationMatrix(
+    Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Scripts.saveAggregationMatrix(
     p_max=p_max,
     q_max=q_max,
     lenSim=lenSim,
@@ -239,13 +239,13 @@ abrut temperature changes, the aggregation method is used to calculate the avera
 temperature instead of the average fluid temperature. The calculated borehole wall temperature is then
 connected to the dynamic model of the borehole heat exchanger.</p>
 <p>More detailed documentation can be found in 
-<a href=\"modelica://IDEAS/Resources/Images/Fluid/HeatExchangers/Borefield/UsersGuide/2014-10thModelicaConference-Picard.pdf\">Picard (2014)</a>.
+<a href=\"modelica://Annex60/Resources/Images/Fluid/HeatExchangers/Borefield/UsersGuide/2014-10thModelicaConference-Picard.pdf\">Picard (2014)</a>.
 and in 
-<a href=\"modelica://IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.UsersGuide\">IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.UsersGuide</a>.
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.UsersGuide\">Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.UsersGuide</a>.
 </p>
 <p>
 A verification of this model can be found in 
-<a href=\"modelica://IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation.TrtValidation\">TrtValidation</a>
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation.TrtValidation\">TrtValidation</a>
 .
 </p>
 </html>", revisions="<html>

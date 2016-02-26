@@ -1,10 +1,10 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield;
 model MultipleBoreHolesUTube
   "Borefield model using single U-tube borehole heat exchanger configuration."
 
   // Medium in borefield
   extends
-    IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Interfaces.partial_multipleBoreHoles;
+    Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Interfaces.partial_multipleBoreHoles;
       replaceable BaseClasses.BoreHoles.SingleBoreHolesInSerie
                                                borHolSer(
     redeclare final package Medium = Medium,
@@ -141,13 +141,13 @@ abrut temperature changes, the aggregation method is used to calculate the avera
 temperature instead of the average fluid temperature. The calculated borehole wall temperature is then
 connected to the dynamic model of the borehole heat exchanger.</p>
 <p>More detailed documentation can be found in 
-<a href=\"modelica://IDEAS/Resources/Images/Fluid/HeatExchangers/BroundHeatExchangers/Borefield/UsersGuide/2014-10thModelicaConference-Picard.pdf\">Picard (2014)</a>.
+<a href=\"modelica://Annex60/Resources/Images/Fluid/HeatExchangers/BroundHeatExchangers/Borefield/UsersGuide/2014-10thModelicaConference-Picard.pdf\">Picard (2014)</a>.
 and in 
-<a href=\"modelica://IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.UsersGuide\">IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.UsersGuide</a>.
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.UsersGuide\">Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.UsersGuide</a>.
 </p>
 <p>
 A verification of this model can be found in 
-<a href=\"modelica://IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation.TrtValidation\">TrtValidation</a>
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Validation.TrtValidation\">TrtValidation</a>
 .
 </p>
 </html>", revisions="<html>

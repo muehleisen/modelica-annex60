@@ -1,4 +1,4 @@
-within IDEAS.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data;
 package BorefieldData "Library of borefield data containers"
 extends Modelica.Icons.Package;
 
