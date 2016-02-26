@@ -15,4 +15,8 @@ FourPortFlowResistanceParameters
 LumpedVolumeDeclarations
 PrescribedOutletStateParameters
 TwoPortFlowResistanceParameters
+HeightPort
+HeightPortHeatMassExchanger
+HeightPortFlowResistanceParameters
+PartialHeightPortInterface
 Examples

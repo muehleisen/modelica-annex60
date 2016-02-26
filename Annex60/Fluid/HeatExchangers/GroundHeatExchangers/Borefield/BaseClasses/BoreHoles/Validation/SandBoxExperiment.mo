@@ -31,7 +31,5 @@ Beier, R., Smith, M, Spitler, J, Reference data sets for vertical borehole groun
 <ul>
 <li>January 2015, Damien Picard: first implementation.</li>
 </ul>
-</html>"),
-    __Dymola_Commands(file="modelica://Annex60/Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/BoreHoles/Validation/SandBoxExperiment.mos"
-        "Simulate and Plot"));
+</html>"));
 end SandBoxExperiment;

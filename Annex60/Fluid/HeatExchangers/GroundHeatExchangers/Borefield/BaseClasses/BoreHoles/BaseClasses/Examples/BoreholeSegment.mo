@@ -40,11 +40,7 @@ equation
       points={{3.2,12},{4,12},{4,20},{-40,20}},
       color={0,127,255},
       smooth=Smooth.None));
-  annotation (
-    __Dymola_Commands(file=
-          "modelica://Annex60/Resources/Scripts/Dymola/Fluid/HeatExchangers/Boreholes/BaseClasses/Examples/BoreholeSegment.mos"
-        "Simulate and plot"),
-    Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
             100}}), graphics),
     experimentSetupOutput,
     Diagram,

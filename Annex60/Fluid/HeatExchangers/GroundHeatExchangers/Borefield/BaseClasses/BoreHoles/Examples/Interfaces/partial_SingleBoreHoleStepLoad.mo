@@ -91,11 +91,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
 
-  annotation (
-    __Dymola_Commands(file=
-          "modelica://Annex60/Resources/Scripts/Dymola/Fluid/HeatExchangers/Boreholes/Examples/UTube.mos"
-        "Simulate and plot"),
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}),
                    graphics),
     experimentSetupOutput,

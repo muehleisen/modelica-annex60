@@ -4,6 +4,7 @@ BoundaryConditions
 Controls
 Fluid
 Media
+HeatTransfer
 Utilities
 Types
 Experimental

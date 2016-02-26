@@ -9,7 +9,9 @@ model SingleBoreHole2UTUbe "Test for the SingleBoreHole model"
     redeclare package Medium = Medium,
     soi=Data.SoilData.SandStone(),
     fil=Data.FillingData.Bentonite(),
-    gen=Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData.c8x1_h110_b5_d3600_T283())
+    gen=Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData.c8x1_h110_b5_d3600_T283(),
+    m_flow_nominal=seg.gen.m_flow_nominal_bh,
+    dp_nominal=1000)
             annotation (Placement(transformation(
         extent={{-13,-13},{13,13}},
         rotation=270,
@@ -39,11 +41,7 @@ equation
       points={{9,20},{-40,20}},
       color={0,127,255},
       smooth=Smooth.None));
-  annotation (
-    __Dymola_Commands(file=
-          "modelica://Annex60/Resources/Scripts/Dymola/Fluid/HeatExchangers/Boreholes/BaseClasses/Examples/BoreholeSegment.mos"
-        "Simulate and plot"),
-    Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-100,-100},{100,
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-100,-100},{100,
             100}}), graphics),
     experimentSetupOutput,
     Diagram,
