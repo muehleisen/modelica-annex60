@@ -2,6 +2,7 @@ ConstantEffectiveness
 HeaterCooler_T
 HeaterCooler_u
 Radiators
+GroundHeatExchangers
 Examples
 Validation
 BaseClasses
