@@ -1,4 +1,4 @@
-within IDEAS.Fluid.Interfaces;
+within Annex60.Fluid.Interfaces;
 record HeightPortFlowResistanceParameters
   "Parameters for flow resistance for models with height ports"
 
@@ -81,7 +81,7 @@ This class contains parameters that are used to
 compute the pressure drop in components that have four fluid streams.
 Note that the nominal mass flow rate is not declared here because
 the model
-<a href=\"modelica://IDEAS.Fluid.Interfaces.PartialHeightPortInterface\">
+<a href=\"modelica://Annex60.Fluid.Interfaces.PartialHeightPortInterface\">
 PartialHeightPortInterface</a>
 already declares it.
 </html>",

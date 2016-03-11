@@ -1,7 +1,7 @@
-within IDEAS.Fluid.Interfaces;
+within Annex60.Fluid.Interfaces;
 model HeightPortHeatMassExchanger
   "Model transporting four fluid streams between height ports with storing mass or energy"
-  extends IDEAS.Fluid.Interfaces.PartialHeightPortInterface(
+  extends Annex60.Fluid.Interfaces.PartialHeightPortInterface(
     final h_outflow_a1_start = h1_outflow_start,
     final h_outflow_b1_start = h1_outflow_start,
     final h_outflow_a2_start = h2_outflow_start,
@@ -11,7 +11,7 @@ model HeightPortHeatMassExchanger
     final h_outflow_a4_start = h4_outflow_start,
     final h_outflow_b4_start = h4_outflow_start);
 
-  extends IDEAS.Fluid.Interfaces.HeightPortFlowResistanceParameters(
+  extends Annex60.Fluid.Interfaces.HeightPortFlowResistanceParameters(
      final computeFlowResistance1=true, final computeFlowResistance2=true,final computeFlowResistance3=true, final computeFlowResistance4=true);
 
   parameter Modelica.SIunits.Time tau1 = 30 "Time constant at nominal flow"
@@ -117,7 +117,7 @@ model HeightPortHeatMassExchanger
   Modelica.SIunits.HeatFlowRate Q4_flow = vol4.heatPort.Q_flow
     "Heat flow rate into medium 2";
 
-  IDEAS.Fluid.MixingVolumes.MixingVolume vol1(
+  Annex60.Fluid.MixingVolumes.MixingVolume vol1(
     redeclare final package Medium = Medium1,
     nPorts = 2,
     V=m1_flow_nominal*tau1/rho1_nominal,
@@ -136,7 +136,7 @@ model HeightPortHeatMassExchanger
                                annotation (Placement(transformation(extent={{-10,80},
             {10,60}})));
 
-  IDEAS.Fluid.MixingVolumes.MixingVolume vol2(
+  Annex60.Fluid.MixingVolumes.MixingVolume vol2(
     redeclare final package Medium = Medium2,
     nPorts=2,
     energyDynamics=if tau2 > Modelica.Constants.eps
@@ -155,7 +155,7 @@ model HeightPortHeatMassExchanger
                                annotation (Placement(transformation(extent={{50,10},
             {70,-10}})));
 
-  IDEAS.Fluid.MixingVolumes.MixingVolume vol3(
+  Annex60.Fluid.MixingVolumes.MixingVolume vol3(
     redeclare final package Medium = Medium3,
     energyDynamics=if tau3 > Modelica.Constants.eps
                          then energyDynamics else
@@ -175,7 +175,7 @@ model HeightPortHeatMassExchanger
         origin={0,-60},
         extent={{10,10},{-10,-10}},
         rotation=180)));
-  IDEAS.Fluid.MixingVolumes.MixingVolume vol4(
+  Annex60.Fluid.MixingVolumes.MixingVolume vol4(
     redeclare final package Medium = Medium4,
     nPorts=2,
     energyDynamics=if tau4 > Modelica.Constants.eps
@@ -194,7 +194,7 @@ model HeightPortHeatMassExchanger
                                annotation (Placement(transformation(extent={{-50,-10},
             {-70,10}})));
 
-  IDEAS.Fluid.FixedResistances.FixedResistanceDpM preDro1(
+  Annex60.Fluid.FixedResistances.FixedResistanceDpM preDro1(
     redeclare final package Medium = Medium1,
     final use_dh=false,
     final m_flow_nominal=m1_flow_nominal,
@@ -209,7 +209,7 @@ model HeightPortHeatMassExchanger
     final ReC=4000) "Pressure drop model for fluid 1"
     annotation (Placement(transformation(extent={{-80,70},{-60,90}})));
 
-  IDEAS.Fluid.FixedResistances.FixedResistanceDpM preDro2(
+  Annex60.Fluid.FixedResistances.FixedResistanceDpM preDro2(
     redeclare final package Medium = Medium2,
     final use_dh=false,
     final m_flow_nominal=m2_flow_nominal,
@@ -223,7 +223,7 @@ model HeightPortHeatMassExchanger
     final dh=1,
     final ReC=4000) "Pressure drop model for fluid 2"
     annotation (Placement(transformation(extent={{90,20},{70,40}})));
-  IDEAS.Fluid.FixedResistances.FixedResistanceDpM preDro3(
+  Annex60.Fluid.FixedResistances.FixedResistanceDpM preDro3(
     redeclare final package Medium = Medium3,
     final use_dh=false,
     final m_flow_nominal=m3_flow_nominal,
@@ -238,7 +238,7 @@ model HeightPortHeatMassExchanger
     final ReC=4000) "Pressure drop model for fluid 3"
     annotation (Placement(transformation(extent={{-90,-42},{-70,-22}})));
 
-  IDEAS.Fluid.FixedResistances.FixedResistanceDpM preDro4(
+  Annex60.Fluid.FixedResistances.FixedResistanceDpM preDro4(
     redeclare final package Medium = Medium4,
     final use_dh=false,
     final m_flow_nominal=m4_flow_nominal,
@@ -396,12 +396,12 @@ The model can be used as-is, although there will be no heat or mass transfer
 between the two fluid streams.
 To add heat transfer, heat flow can be added to the heat port of the two volumes.
 See for example
-<a href=\"IDEAS.Fluid.Chillers.Carnot\">
-IDEAS.Fluid.Chillers.Carnot</a>.
+<a href=\"Annex60.Fluid.Chillers.Carnot\">
+Annex60.Fluid.Chillers.Carnot</a>.
 To add moisture input into (or moisture output from) volume <code>vol2</code>,
 the model can be replaced as shown in
-<a href=\"modelica://IDEAS.Fluid.HeatExchangers.BaseClasses.HexElement\">
-IDEAS.Fluid.HeatExchangers.BaseClasses.HexElement</a>.
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.BaseClasses.HexElement\">
+Annex60.Fluid.HeatExchangers.BaseClasses.HexElement</a>.
 </p>
 <h4>Implementation</h4>
 <p>
