@@ -18,12 +18,12 @@ model internalHEXUTube
     annotation (Placement(transformation(extent={{-22,30},{-2,50}})));
   Sources.MassFlowSource_T boundary(nPorts=1,
     redeclare package Medium = Medium,
-    m_flow=intHex.gen.m_flow_nominal_bh,
+    m_flow=intHex.gen.m_flow_nominal_bh/10,
     T=293.15)
     annotation (Placement(transformation(extent={{-48,-4},{-28,16}})));
   Sources.MassFlowSource_T boundary1(nPorts=1,
     redeclare package Medium = Medium,
-    m_flow=intHex.gen.m_flow_nominal_bh,
+    m_flow=intHex.gen.m_flow_nominal_bh/10,
     T=293.15)
     annotation (Placement(transformation(extent={{54,4},{34,-16}})));
   Sources.FixedBoundary bou(nPorts=2, redeclare package Medium = Medium)
@@ -64,5 +64,8 @@ equation
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),
     experiment(StopTime=100000),
-    __Dymola_experimentSetupOutput(events=false));
+    __Dymola_experimentSetupOutput(events=false),
+    __Dymola_Commands(file=
+          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/BoreHoles/Examples/internalHEXUTube.mos"
+        "simulate and plot"));
 end internalHEXUTube;

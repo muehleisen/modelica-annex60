@@ -18,9 +18,9 @@ model internalHEX2UTube
     fil=Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.FillingData.FillingTrt(),
     dynFil=true,
     gen=Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.GeneralData.GeneralTrt2UTube(),
-
     T_start=285.15)
     annotation (Placement(transformation(extent={{-10,-12},{10,10}})));
+
   Modelica.Thermal.HeatTransfer.Celsius.FixedTemperature fixedTemperature(T=12)
     annotation (Placement(transformation(extent={{-22,30},{-2,50}})));
   Sources.MassFlowSource_T boundary(nPorts=2,
@@ -44,7 +44,7 @@ model internalHEX2UTube
     annotation (Placement(transformation(extent={{-24,-12},{-36,0}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=Rb_sim)
     annotation (Placement(transformation(extent={{-10,-58},{10,-38}})));
-  Modelica.Blocks.Sources.Constant Rb_ref(k=0.0677701)
+  Modelica.Blocks.Sources.Constant Rb_ref(k=0.0569983)
     annotation (Placement(transformation(extent={{-10,-80},{10,-60}})));
   Modelica.Blocks.Math.Add error(k2=-1)
     annotation (Placement(transformation(extent={{22,-70},{42,-50}})));
@@ -90,5 +90,7 @@ equation
   connect(senTem3.port_b, bou.ports[4]) annotation (Line(points={{28,-16},{32,-16},
           {32,-21},{-40,-21}}, color={0,127,255}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}})));
+            -100},{100,100}})), __Dymola_Commands(file=
+          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/BoreHoles/Examples/internalHEX2UTube.mos"
+        "simulate and plot"));
 end internalHEX2UTube;

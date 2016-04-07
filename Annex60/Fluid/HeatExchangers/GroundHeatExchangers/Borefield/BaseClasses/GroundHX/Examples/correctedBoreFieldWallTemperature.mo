@@ -105,5 +105,8 @@ July 2014, by Damien Picard:<br>
 First implementation.
 </li>
 </ul>
-</html>"));
+</html>"),
+    __Dymola_Commands(file=
+          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/GroundHX/Examples/correctedBoreFieldWallTemperature.mos"
+        "simulate and plot"));
 end correctedBoreFieldWallTemperature;

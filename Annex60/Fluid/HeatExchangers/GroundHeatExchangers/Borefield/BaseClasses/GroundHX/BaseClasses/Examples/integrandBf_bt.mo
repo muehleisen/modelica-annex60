@@ -31,5 +31,8 @@ July 2014, by Damien Picard:<br>
 First implementation.
 </li>
 </ul>
-</html>"));
+</html>"),
+    __Dymola_Commands(file=
+          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/GroundHX/BaseClasses/Examples/integrandBf_bt.mos"
+        "simulate and plot"));
 end integrandBf_bt;

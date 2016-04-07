@@ -59,5 +59,8 @@ equation
     m_flow_nominal=m_flow_nominal,
     printDebug=true);
 
-  annotation (experiment, __Dymola_experimentSetupOutput);
+  annotation (experiment, __Dymola_experimentSetupOutput,
+    __Dymola_Commands(file=
+          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/BoreHoles/Examples/doubleUTubeResitances.mos"
+        "simulate and plot"));
 end doubleUTubeResistances;

@@ -1,8 +1,9 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.BaseClasses;
 function cellWidth
-  " Calculates the width of the cells of each level. The width increase exponential with base 2 "
-  extends Interface.partialAggFunction;
+  " Calculates the width of the cells of each level. The width increases exponentially with base 2 "
+  extends Modelica.Icons.Function;
 
+  input Integer q_max "Number of aggregation levels";
   output Integer[q_max] rArr "Width of cell at each level";
 
 algorithm

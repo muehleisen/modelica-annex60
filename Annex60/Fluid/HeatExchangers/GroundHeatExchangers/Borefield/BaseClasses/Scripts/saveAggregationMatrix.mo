@@ -10,8 +10,8 @@ function saveAggregationMatrix
 
   output Real[q_max,p_max] kappaMat "Transient resistance for each cell";
   output Integer[q_max] rArr=
-      Aggregation.BaseClasses.cellWidth(                      q_max=q_max,
-      p_max=p_max) "Width of aggregation cells for each level";
+      Aggregation.BaseClasses.cellWidth(                      q_max=q_max)
+    "Width of aggregation cells for each level";
   output Integer[q_max,p_max] nuMat=
       Aggregation.BaseClasses.nbPulseAtEndEachLevel(
       q_max=q_max,

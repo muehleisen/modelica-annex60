@@ -21,5 +21,8 @@ First implementation.
       __Dymola_NumberOfIntervals=100,
       Tolerance=1e-005,
       __Dymola_Algorithm="Dassl"),
-    __Dymola_experimentSetupOutput(events=false));
+    __Dymola_experimentSetupOutput(events=false),
+    __Dymola_Commands(file=
+          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/GroundHX/BaseClasses/Examples/ierf.mos"
+        "simulate and plot"));
 end ierf;

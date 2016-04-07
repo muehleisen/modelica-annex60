@@ -1,47 +1,31 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.Examples;
 model BoreholeSegment "Test for the boreholeSegment model"
-  extends Modelica.Icons.Example;
-  package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater;
+  extends BaseClasses.BoreholeSegment;
 
   BoreHoleSegmentFourPort seg(
     redeclare package Medium = Medium,
     dp_nominal=5,
     soi=Data.SoilData.SandStone(),
     fil=Data.FillingData.Bentonite(),
-    gen=Data.GeneralData.c8x1_h110_b5_d3600_T283()) annotation (Placement(transformation(
+    gen=Data.GeneralData.c8x1_h110_b5_d3600_T283(),
+    m1_flow_nominal=m_flow_nominal,
+    m2_flow_nominal=m_flow_nominal)                 annotation (Placement(transformation(
         extent={{-13,-13},{13,13}},
         rotation=270,
         origin={11,-1})));
-  Annex60.Fluid.Sources.MassFlowSource_T sou_1(
-    redeclare package Medium = Medium,
-    nPorts=1,
-    use_T_in=false,
-    m_flow=1,
-    T=303.15) annotation (Placement(transformation(extent={{-60,40},{-40,
-            60}}, rotation=0)));
-  Annex60.Fluid.Sources.Boundary_pT sin_2(
-    redeclare package Medium = Medium,
-    use_p_in=false,
-    use_T_in=false,
-    nPorts=1,
-    p=101330,
-    T=283.15) annotation (Placement(transformation(extent={{-60,10},{-40,30}},
-          rotation=0)));
+
 equation
-  connect(sou_1.ports[1], seg.port_a1) annotation (Line(
-      points={{-40,50},{20,50},{20,12},{18.8,12}},
-      color={0,127,255},
-      smooth=Smooth.None));
   connect(seg.port_b1, seg.port_a2) annotation (Line(
       points={{18.8,-14},{3.2,-14}},
       color={0,127,255},
       smooth=Smooth.None));
-  connect(seg.port_b2, sin_2.ports[1]) annotation (Line(
-      points={{3.2,12},{4,12},{4,20},{-40,20}},
-      color={0,127,255},
-      smooth=Smooth.None));
-  annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
-            100}}), graphics),
+  connect(senTem_in.port_b, seg.port_a1) annotation (Line(points={{0,50},{20,50},
+          {20,12},{18.8,12}}, color={0,127,255}));
+ connect(seg.port_b2, senTem_out.port_a)
+    annotation (Line(points={{3.2,12},{3.2,20},{0,20}}, color={0,127,255}));
+
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-100,-100},
+            {100,100}})),
     experimentSetupOutput,
     Diagram,
     Documentation(info="<html>
@@ -55,5 +39,7 @@ August 30, 2011, by Pierre Vigouroux:<br>
 First implementation.
 </li>
 </ul>
-</html>"));
+</html>"),
+    __Dymola_Commands(file="Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/BoreHoles/Examples/boreholeSegment.mos"
+        "simulate and plot"));
 end BoreholeSegment;

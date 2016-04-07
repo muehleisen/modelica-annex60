@@ -2,5 +2,4 @@ within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.A
 package Examples 
   extends Modelica.Icons.ExamplesPackage;
 
-
 end Examples;

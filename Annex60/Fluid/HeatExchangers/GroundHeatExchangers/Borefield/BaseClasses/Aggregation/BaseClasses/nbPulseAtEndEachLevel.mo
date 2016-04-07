@@ -1,6 +1,6 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.BaseClasses;
 function nbPulseAtEndEachLevel
-  "Calculates the number of pulses at the end of each cells"
+  "Calculates the cumulative sum of covered pulses at the end of each cell."
   extends Interface.partialAggFunction;
 
   input Integer[q_max] rArr "Width of cells at each level";

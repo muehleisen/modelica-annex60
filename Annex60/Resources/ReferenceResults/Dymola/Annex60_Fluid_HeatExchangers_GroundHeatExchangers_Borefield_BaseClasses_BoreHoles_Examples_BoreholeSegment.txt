@@ -1,0 +1,12 @@
+last-generated=2016-04-07
+statistics-simulation=
+{
+  "numerical Jacobians": "0", 
+  "nonlinear": " ", 
+  "number of continuous time states": "16", 
+  "linear": "0, 0, 0"
+}
+seg.intHEX.Rgb_val=[0.00443660421296954155, 0.00443660421296954155]
+seg.intHEX.Rgg_val=[0.00862557254731655121, 0.00862557254731655121]
+seg.intHEX.RCondGro_val=[0.01148231420665979385, 0.01148231420665979385]
+time=[0., 1000.]
