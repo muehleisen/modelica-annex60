@@ -1,8 +1,11 @@
 UsersGuide
 ConservationEquation
 FourPortHeatMassExchanger
+HeightPort
+HeightPortHeatMassExchanger
 PartialFourPort
 PartialFourPortInterface
+PartialHeightPortInterface
 PartialTwoPort
 PartialTwoPortInterface
 PartialTwoPortTransport
@@ -12,11 +15,8 @@ StaticTwoPortConservationEquation
 StaticTwoPortHeatMassExchanger
 TwoPortHeatMassExchanger
 FourPortFlowResistanceParameters
+HeightPortFlowResistanceParameters
 LumpedVolumeDeclarations
 PrescribedOutletStateParameters
 TwoPortFlowResistanceParameters
-HeightPort
-HeightPortHeatMassExchanger
-HeightPortFlowResistanceParameters
-PartialHeightPortInterface
 Examples
