@@ -1,6 +1,6 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.BaseClasses.Examples;
 model SingleBoreHolesInSerie "FIXME: this does not compile while 
-  Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Examples.borefield8x1 does. I don't know why."
+  Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Examples.Borefield8x1 does. I don't know why."
   extends BaseClasses.BoreholeSegment;
 
   Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.SingleBoreHolesInSerie

@@ -1,5 +1,5 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.BaseClasses.Examples;
-model integrandBh_rt
+model IntegrandBh_rt
   extends Modelica.Icons.Example;
 
   parameter Real samplePeriod=0.01;
@@ -30,7 +30,7 @@ algorithm
       __Dymola_NumberOfIntervals=100,
       Tolerance=1e-005,
       __Dymola_Algorithm="Dassl"), __Dymola_experimentSetupOutput, Documentation(info="<html>
-        <p>Test implementation of integrandBh_rt function.</p>
+        <p>Test implementation of IntegrandBh_rt function.</p>
 </html>", revisions="<html>
 <ul>
 <li>
@@ -40,6 +40,6 @@ First implementation.
 </ul>
 </html>"),
     __Dymola_Commands(file=
-          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/GroundHX/BaseClasses/Examples/integrandBh_rt.mos"
+          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/GroundHX/BaseClasses/Examples/IntegrandBh_rt.mos"
         "simulate and plot"));
-end integrandBh_rt;
+end IntegrandBh_rt;

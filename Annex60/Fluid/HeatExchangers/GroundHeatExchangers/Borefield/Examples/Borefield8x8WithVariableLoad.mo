@@ -1,5 +1,5 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Examples;
-model borefield8x8WithVariableLoad
+model Borefield8x8WithVariableLoad
   "Model of a borefield in a 8x8 boreholes with variable load."
 
   extends Modelica.Icons.Example;
@@ -117,8 +117,8 @@ First implementation.
 </ul>
 </html>"),
     __Dymola_Commands(file=
-          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Examples/borefield8x8WithVariableLoad.mos"
+          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Examples/Borefield8x8WithVariableLoad.mos"
         "simulate and plot", file=
-          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Examples/borefield8x8WithVariableLoad.mos"
+          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Examples/Borefield8x8WithVariableLoad.mos"
         "simulate and plot"));
-end borefield8x8WithVariableLoad;
+end Borefield8x8WithVariableLoad;

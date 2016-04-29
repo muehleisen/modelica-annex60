@@ -1,5 +1,5 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.BaseClasses.Examples;
-model ierf "Test for the error function"
+model Ierf "Test for the error function"
   extends Modelica.Icons.Example;
 
   parameter Integer lim=1;
@@ -7,7 +7,7 @@ model ierf "Test for the error function"
 algorithm
   y_ierf := BaseClasses.ierf(u=time*lim);
         annotation (Documentation(info="<html>
-        <p>Test implementation of ierf function.</p>
+        <p>Test implementation of Ierf function.</p>
 </html>", revisions="<html>
 <ul>
 <li>
@@ -23,6 +23,6 @@ First implementation.
       __Dymola_Algorithm="Dassl"),
     __Dymola_experimentSetupOutput(events=false),
     __Dymola_Commands(file=
-          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/GroundHX/BaseClasses/Examples/ierf.mos"
+          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/GroundHX/BaseClasses/Examples/Ierf.mos"
         "simulate and plot"));
-end ierf;
+end Ierf;

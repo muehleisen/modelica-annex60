@@ -1,5 +1,5 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.Examples;
-model boreFieldWallTemperature "Test for the function boreFieldWallTemperature"
+model BoreFieldWallTemperature "Test for the function BoreFieldWallTemperature"
   extends Modelica.Icons.Example;
 
   parameter Data.GeneralData.c8x1_h110_b5_d3600_T283 gen;
@@ -19,7 +19,7 @@ equation
 
   annotation (experiment(StopTime=700000, __Dymola_NumberOfIntervals=100),
       __Dymola_experimentSetupOutput, Documentation(info="<html>
-        <p>Test implementation of boreFieldWallTemperature function.</p>
+        <p>Test implementation of BoreFieldWallTemperature function.</p>
 </html>", revisions="<html>
 <ul>
 <li>
@@ -29,6 +29,6 @@ First implementation.
 </ul>
 </html>"),
     __Dymola_Commands(file=
-          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/GroundHX/Examples/boreFieldWallTemperature.mos"
+          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/GroundHX/Examples/BoreFieldWallTemperature.mos"
         "simulate and plot"));
-end boreFieldWallTemperature;
+end BoreFieldWallTemperature;

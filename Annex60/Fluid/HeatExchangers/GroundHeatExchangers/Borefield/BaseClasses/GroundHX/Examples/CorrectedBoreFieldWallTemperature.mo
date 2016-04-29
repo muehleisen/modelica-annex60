@@ -1,6 +1,6 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.GroundHX.Examples;
-model correctedBoreFieldWallTemperature
-  "Test for the function correctedBoreFieldWallTemperature"
+model CorrectedBoreFieldWallTemperature
+  "Test for the function CorrectedBoreFieldWallTemperature"
   extends Modelica.Icons.Example;
 
   parameter Modelica.SIunits.Temperature[:] TResSho={283.1499938964844, 284.28900146484375, 284.8553161621094, 285.1809387207031,
@@ -107,6 +107,6 @@ First implementation.
 </ul>
 </html>"),
     __Dymola_Commands(file=
-          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/GroundHX/Examples/correctedBoreFieldWallTemperature.mos"
+          "Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/GroundHX/Examples/CorrectedBoreFieldWallTemperature.mos"
         "simulate and plot"));
-end correctedBoreFieldWallTemperature;
+end CorrectedBoreFieldWallTemperature;
