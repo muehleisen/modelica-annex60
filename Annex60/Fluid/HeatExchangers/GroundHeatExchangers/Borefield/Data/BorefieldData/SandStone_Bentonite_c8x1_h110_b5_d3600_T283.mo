@@ -1,8 +1,8 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.BorefieldData;
 record SandStone_Bentonite_c8x1_h110_b5_d3600_T283 =
     Records.BorefieldData (
-    pathMod=
-        "Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.BorefieldData.SandStone_Bentonite_c8x1_h110_b5_d3600_T283",
+    pathMod=Modelica.Utilities.Files.loadResource(
+        "modelica://Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.Data.BorefieldData.SandStone_Bentonite_c8x1_h110_b5_d3600_T283"),
     pathCom=Modelica.Utilities.Files.loadResource(
         "modelica://Annex60/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/Data/BorefieldData/SandStone_Bentonite_c8x1_h110_b5_d3600_T283.mo"),
     redeclare replaceable record Soi = SoilData.SandStone,

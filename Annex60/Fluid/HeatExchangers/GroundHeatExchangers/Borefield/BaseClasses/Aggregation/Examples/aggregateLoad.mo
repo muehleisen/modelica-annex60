@@ -2,24 +2,19 @@ within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.A
 model aggregateLoad
   "Test for the function aggregateLoad, cellWidth, nbOfLevelAgg, nbPulseAtEndEachLevel and previousCellIndex."
   extends Modelica.Icons.Example;
-
-  parameter Integer n_max=14;
-  parameter Integer p_max=2;
-
-  parameter Integer q_max=BaseClasses.nbOfLevelAgg(n_max, p_max);
-
+  parameter Integer n_max=14 "Number of load steps to aggregate";
+  parameter Integer p_max=2 "Number of cells by level";
+  parameter Integer q_max=BaseClasses.nbOfLevelAgg(n_max, p_max) "Number of levels";
   discrete Modelica.SIunits.Power QNew "New load element";
   discrete Modelica.SIunits.Power[q_max,p_max] QAgg(start=fill(
         0,
         q_max,
         p_max)) "Aggregated load matrix form the previous time step";
-
   parameter Integer[q_max] rArr=BaseClasses.cellWidth(q_max);
   parameter Integer[q_max,p_max] nuMat=BaseClasses.nbPulseAtEndEachLevel(
       q_max,
       p_max,
       rArr);
-
   Modelica.Blocks.Sources.Cosine cos(freqHz=0.1)
     annotation (Placement(transformation(extent={{-80,30},{-60,50}})));
 algorithm
@@ -33,9 +28,13 @@ algorithm
       QNew=QNew,
       QAggOld=pre(QAgg));
   end when;
-
   annotation (
     Documentation(info="<html>
+<p>
+This functions tests
+<a href=\"modelica://Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.aggregateLoad\">
+Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.aggregateLoad</a>.
+</p>
 </html>", revisions="<html>
 <ul>
 <li>

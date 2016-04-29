@@ -1,5 +1,5 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.Examples;
-function transientFrac "FIXME: I don't know why I can't make a model of this function:
+model transientFrac "FIXME: I don't know why I can't make a model of this function:
   ATTENTION: don't translate this function! otherwise it doesn't work anymore, \\
   because some of the code is not possible to statically translate into c-code!\\
   ATTENTION: first translate Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.transientFrac!
@@ -10,12 +10,11 @@ function transientFrac "FIXME: I don't know why I can't make a model of this fun
   Borefield.Data.ShortTermResponse.SandstoneH100qSte30()
   ---------------------------------------------------------------------
   "
-  extends Modelica.Icons.Function;
-
-  input Integer n_max=201;
-  input Integer p_max=5;
-  input Modelica.SIunits.Temperature TWallSteSta = 288;
-  input Real[151] TResSho=
+  extends Modelica.Icons.Example;
+  parameter Integer n_max=201;
+  parameter Integer p_max=5;
+  parameter Modelica.SIunits.Temperature TWallSteSta = 288;
+  parameter Real[151] TResSho=
   {283.1499938964844, 284.28900146484375, 284.8553161621094, 285.1809387207031,
   285.410400390625, 285.5829772949219, 285.7174987792969, 285.8280029296875,
   285.9212951660156, 286.001953125, 286.0731506347656, 286.1373291015625,
@@ -54,23 +53,19 @@ function transientFrac "FIXME: I don't know why I can't make a model of this fun
    287.7688903808594, 287.7725524902344, 287.77618408203125, 287.77978515625,
   287.7833251953125, 287.786865234375, 287.7903747558594, 287.7938537597656,
   287.79730224609375, 287.8006896972656, 287.8040771484375};
-
-   output Integer q_max=BaseClasses.nbOfLevelAgg(
+   parameter Integer q_max=BaseClasses.nbOfLevelAgg(
       n_max, p_max);
-   output Integer v_max;
-   output Integer[q_max] rArr;
-   output Integer[q_max,p_max] nuMat;
-   output Real[q_max,p_max] kappaMat;
-
+   Integer v_max;
+   Integer[q_max] rArr;
+   Integer[q_max,p_max] nuMat;
+   Real[q_max,p_max] kappaMat;
 algorithm
   (,v_max) := BaseClasses.nbOfLevelAgg(n_max, p_max);
   rArr := BaseClasses.cellWidth(q_max);
-
   nuMat := BaseClasses.nbPulseAtEndEachLevel(
     q_max,
     p_max,
     rArr);
-
    kappaMat :=Aggregation.transientFrac(
      q_max=q_max,
      p_max=p_max,
