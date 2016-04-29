@@ -1,5 +1,5 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.Examples;
-model aggregateLoad
+model AggregateLoad
   "Test for the function aggregateLoad, cellWidth, nbOfLevelAgg, nbPulseAtEndEachLevel and previousCellIndex."
   extends Modelica.Icons.Example;
   parameter Integer n_max=14 "Number of load steps to aggregate";
@@ -47,6 +47,6 @@ First implementation.
             100}})),
     experiment(StopTime=10),
     __Dymola_experimentSetupOutput,
-    __Dymola_Commands(file="Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/Aggregation/Examples/aggregationLoad.mos"
+    __Dymola_Commands(file="Resources/Scripts/Dymola/Fluid/HeatExchangers/GroundHeatExchangers/Borefield/BaseClasses/Aggregation/Examples/AggregateLoad.mos"
         "simulate and plot"));
-end aggregateLoad;
+end AggregateLoad;

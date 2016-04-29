@@ -1,5 +1,5 @@
 within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.Examples;
-model transientFrac "FIXME: I don't know why I can't make a model of this function:
+model TransientFrac "FIXME: I don't know why I can't make a model of this function:
   ATTENTION: don't translate this function! otherwise it doesn't work anymore, \\
   because some of the code is not possible to statically translate into c-code!\\
   ATTENTION: first translate Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.Aggregation.transientFrac!
@@ -83,4 +83,4 @@ First implementation.
 </li>
 </ul>
 </html>"));
-end transientFrac;
+end TransientFrac;
