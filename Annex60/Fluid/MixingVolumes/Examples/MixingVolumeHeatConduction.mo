@@ -29,6 +29,7 @@ model MixingVolumeHeatConduction "Test model for heat transfer to volume"
     V=1,
     redeclare package Medium = Medium,
     m_flow_nominal=0.01,
+    prescribedHeatFlowRate=false,
     energyDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
     massDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
     allowFlowReversal=true,

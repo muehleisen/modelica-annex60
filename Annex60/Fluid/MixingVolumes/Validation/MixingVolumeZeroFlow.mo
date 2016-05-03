@@ -8,6 +8,7 @@ model MixingVolumeZeroFlow
     redeclare package Medium = Medium,
     m_flow_nominal=1,
     V=1,
+    prescribedHeatFlowRate=false,
     energyDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
     massDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
     allowFlowReversal=false)
@@ -47,6 +48,7 @@ model MixingVolumeZeroFlow
     redeclare package Medium = Medium,
     m_flow_nominal=1,
     V=1,
+    prescribedHeatFlowRate=false,
     energyDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
     massDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
     allowFlowReversal=false)
@@ -175,6 +177,12 @@ equation
       StopTime=2),
     Documentation(revisions="<html>
 <ul>
+<li>
+May 3, 2016 by Filip Jorissen:<br/>
+Added value for <code>prescribedHeatFlowRate</code> in all models.
+This is for <a href=\"https://github.com/iea-annex60/modelica-annex60/issues/445\">
+issue 445</a>.
+</li>
 <li>
 January 27, 2016, by Michael Wetter;<br/>
 Removed algorithm specification in experiment annotation.

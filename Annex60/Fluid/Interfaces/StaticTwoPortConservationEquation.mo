@@ -310,9 +310,12 @@ Input connectors of the model are
 
 <p>
 The model can only be used as a steady-state model with two fluid ports.
-For a model with a dynamic balance, and more fluid ports, use
+For a model with a dynamic balance, use
 <a href=\"modelica://Annex60.Fluid.Interfaces.ConservationEquation\">
 Annex60.Fluid.Interfaces.ConservationEquation</a>.
+For a model with a static balance and more fluid ports, use
+<a href=\"modelica://Annex60.Fluid.Interfaces.StaticMultiPortConservationEquation\">
+Annex60.Fluid.Interfaces.StaticMultiPortConservationEquation</a>.
 </p>
 </html>",
 revisions="<html>

@@ -10,6 +10,9 @@ equation
   connect(QSen_flow.y, dynBal.Q_flow) annotation (Line(
       points={{-19,88},{54,88},{54,16},{58,16}},
       color={0,0,127}));
+  connect(QSen_flow.y, mulSteBal.Q_flow) annotation (Line(
+      points={{-19,88},{54,88},{54,48},{8,48}},
+      color={0,0,127}));
 
   annotation (
 defaultComponentName="vol",
@@ -106,6 +109,12 @@ Annex60.Fluid.MassExchangers.HumidifierPrescribed</a>.
 
 </html>", revisions="<html>
 <ul>
+<li>
+May 3, 2016 by Filip Jorissen:<br/>
+Added changes for steady state balance for multiple ports.
+This is for <a href=\"https://github.com/iea-annex60/modelica-annex60/issues/445\">
+issue 445</a>.
+</li>
 <li>
 January 19, 2016, by Michael Wetter:<br/>
 Updated documentation due to the addition of an input for trace substance

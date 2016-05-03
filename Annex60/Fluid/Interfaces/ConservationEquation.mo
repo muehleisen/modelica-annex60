@@ -396,6 +396,9 @@ the model
 <a href=\"modelica://Annex60.Fluid.Interfaces.StaticTwoPortConservationEquation\">
 Annex60.Fluid.Interfaces.StaticTwoPortConservationEquation</a>
 provides a more efficient implementation.
+For a model with a static balance and more fluid ports, use
+<a href=\"modelica://Annex60.Fluid.Interfaces.StaticMultiPortConservationEquation\">
+Annex60.Fluid.Interfaces.StaticMultiPortConservationEquation</a>.
 </p>
 <p>
 For a model that instantiates this model, see

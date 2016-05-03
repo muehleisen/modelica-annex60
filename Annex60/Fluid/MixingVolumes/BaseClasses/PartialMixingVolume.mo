@@ -11,7 +11,7 @@ partial model PartialMixingVolume
   // volume works without the user having to set this advanced parameter,
   // but to get high robustness, a user can set it to the approriate value
   // as described in the info section.
-  constant Boolean prescribedHeatFlowRate = false
+  constant Boolean prescribedHeatFlowRate = true
     "Set to true if the model has a prescribed heat flow at its heatPort. If the heat flow rate at the heatPort is only based on temperature difference, then set to false";
 
   constant Boolean simplify_mWat_flow = true
@@ -85,8 +85,23 @@ protected
     m(start=V*rho_start),
     nPorts=nPorts,
     final mSenFac=mSenFac) if
-        not useSteadyStateTwoPort "Model for dynamic energy balance"
+        not useSteadyStateTwoPort and not useSteadyStateMultiPort
+    "Model for dynamic energy balance"
     annotation (Placement(transformation(extent={{60,0},{80,20}})));
+  Annex60.Fluid.Interfaces.StaticMultiPortConservationEquation
+    mulSteBal(
+    nPorts=nPorts,
+    final simplify_mWat_flow = simplify_mWat_flow,
+    final use_C_flow = use_C_flow,
+    redeclare final package Medium=Medium,
+    final m_flow_nominal = m_flow_nominal,
+    final m_flow_small = m_flow_small,
+    final prescribedHeatFlowRate=prescribedHeatFlowRate) if
+                              useSteadyStateMultiPort
+    "Model for steady-state balance if nPorts>2"      annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={20,40})));
 
   // Density at start values, used to compute initial values and start guesses
   parameter Modelica.SIunits.Density rho_start=Medium.density(
@@ -108,6 +123,14 @@ protected
   // See Annex60, issue 282 for a discussion.
   final parameter Boolean useSteadyStateTwoPort=(nPorts == 2) and
       (prescribedHeatFlowRate or (not allowFlowReversal)) and (
+      energyDynamics == Modelica.Fluid.Types.Dynamics.SteadyState) and (
+      massDynamics == Modelica.Fluid.Types.Dynamics.SteadyState) and (
+      substanceDynamics == Modelica.Fluid.Types.Dynamics.SteadyState) and (
+      traceDynamics == Modelica.Fluid.Types.Dynamics.SteadyState)
+    "Flag, true if the model has two ports only and uses a steady state balance"
+    annotation (Evaluate=true);
+
+  final parameter Boolean useSteadyStateMultiPort= (nPorts > 2) and (
       energyDynamics == Modelica.Fluid.Types.Dynamics.SteadyState) and (
       massDynamics == Modelica.Fluid.Types.Dynamics.SteadyState) and (
       substanceDynamics == Modelica.Fluid.Types.Dynamics.SteadyState) and (
@@ -161,6 +184,14 @@ equation
     connect(hOut_internal,  steBal.hOut);
     connect(XiOut_internal, steBal.XiOut);
     connect(COut_internal,  steBal.COut);
+  elseif useSteadyStateMultiPort then
+    U=0;
+    mXi=zeros(Medium.nXi);
+    m=0;
+    mC=zeros(Medium.nC);
+    connect(hOut_internal,  mulSteBal.hOut);
+    connect(XiOut_internal, mulSteBal.XiOut);
+    connect(COut_internal,  mulSteBal.COut);
   else
       connect(dynBal.ports, ports) annotation (Line(
       points={{70,0},{70,-20},{2.22045e-15,-20},{2.22045e-15,-100}},
@@ -185,6 +216,10 @@ equation
   connect(preTem.port, heatPort)
     annotation (Line(points={{-88,20},{-92,20},{-92,0},{-100,0}},
                                                            color={191,0,0}));
+  connect(mulSteBal.ports, ports) annotation (Line(
+        points={{20,30},{20,30},{20,-46},{20,-100},{0,-100}}, color={0,127,255}));
+  connect(mulSteBal.C_flow, C_flow) annotation (Line(
+        points={{8,36},{8,36},{-20,36},{-20,-60},{-120,-60}},   color={0,0,127}));
   annotation (
 defaultComponentName="vol",
 Documentation(info="<html>
@@ -308,10 +343,17 @@ Annex60.Fluid.MixingVolumes</a>.
 </html>", revisions="<html>
 <ul>
 <li>
+May 3, 2016 by Filip Jorissen:<br/>
+Added implementation of steady state balance for multiple ports.
+Changed default value of <code>prescribedHeatFlowRate</code> to <code>true</code>.
+This is for <a href=\"https://github.com/iea-annex60/modelica-annex60/issues/445\">
+issue 445</a>.
+</li>
+<li>
 February 19, 2016 by Filip Jorissen:<br/>
 Added outputs U, m, mXi, mC for being able to
 check conservation of quantities. 
-This if or <a href=\"https://github.com/iea-annex60/modelica-annex60/issues/247\">
+This is for <a href=\"https://github.com/iea-annex60/modelica-annex60/issues/247\">
 issue 247</a>.
 </li>
 <li>
