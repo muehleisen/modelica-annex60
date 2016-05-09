@@ -158,5 +158,8 @@ equation
     Documentation(info="<html>
 <p>This model illustrates the use of a steady state mixing volume that is connected to more than two ports.</p>
 <p>Its main goal is to prove that the model behaves well for zero flow when multiple ports are connected to the model.</p>
-</html>"));
+</html>"),
+    __Dymola_Commands(file=
+          "Resources/Scripts/Dymola/Fluid/MixingVolumes/Validation/MixingVolumeZeroFlowMultiPort.mos"
+        "Simulate and plot"));
 end MixingVolumeZeroFlowMultiPort;

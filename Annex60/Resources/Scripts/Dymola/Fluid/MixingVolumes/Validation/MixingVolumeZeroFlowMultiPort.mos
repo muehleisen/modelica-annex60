@@ -1,0 +1,10 @@
+Advanced.Define.AimForHighAccuracy = false;
+simulateModel("Annex60.Fluid.MixingVolumes.Validation.MixingVolumeZeroFlowMultiPort", tolerance=1E-6, stopTime=2, method="dassl", resultFile="MixingVolumeZeroFlowMultiPort");
+createPlot(id=1, 
+position={15, 10, 592, 421}, 
+y={"vol3.T"}, 
+range={0.0, 10.0, 272.0, 274.2}, 
+grid=true, 
+colors={{28,108,200}});
+
+Advanced.Define.AimForHighAccuracy = true;
