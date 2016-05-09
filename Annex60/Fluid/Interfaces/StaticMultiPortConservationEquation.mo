@@ -32,6 +32,9 @@ model StaticMultiPortConservationEquation
   constant Modelica.SIunits.MassFlowRate eps = 1e-10
     "Constant for regularising mass flow rates";
 
+  parameter Modelica.SIunits.HeatFlowRate Q_flow_small = deltaReg * cp_default/1E3
+    "Small heat flow rate for checkign conservation of energy";
+
   Modelica.Blocks.Interfaces.RealInput Q_flow(unit="W")
     "Sensible plus latent heat flow rate transferred into the medium"
     annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
@@ -80,6 +83,13 @@ protected
                                             caseSensitive=false)
                                             then 1 else 0 for i in 1:Medium.nXi}
     "Vector with zero everywhere except where species is";
+  final parameter Medium.ThermodynamicState state_default = Medium.setState_pTX(
+      T=Medium.T_default,
+      p=Medium.p_default,
+      X=Medium.X_default[1:Medium.nXi]) "Medium state at default values";
+  // Density at medium default values, used to compute the size of control volumes
+  final parameter Modelica.SIunits.SpecificHeatCapacity cp_default=Medium.specificHeatCapacityCp(
+    state=state_default) "Density, used to compute fluid mass";
 
   Real m_flowInv(unit="s/kg") "Regularization of 1/m_flow of port_a";
 
@@ -94,21 +104,20 @@ protected
   final parameter Real deltaReg = m_flow_small/1E3
     "Smoothing region for inverseXRegularized";
 
-//   final parameter Real deltaInvReg = 1/deltaReg
-//     "Inverse value of delta for inverseXRegularized";
-//
-//   final parameter Real aReg = -15*deltaInvReg
-//     "Polynomial coefficient for inverseXRegularized";
-//   final parameter Real bReg = 119*deltaInvReg^2
-//     "Polynomial coefficient for inverseXRegularized";
-//   final parameter Real cReg = -361*deltaInvReg^3
-//     "Polynomial coefficient for inverseXRegularized";
-//   final parameter Real dReg = 534*deltaInvReg^4
-//     "Polynomial coefficient for inverseXRegularized";
-//   final parameter Real eReg = -380*deltaInvReg^5
-//     "Polynomial coefficient for inverseXRegularized";
-//   final parameter Real fReg = 104*deltaInvReg^6
-//     "Polynomial coefficient for inverseXRegularized";
+   final parameter Real deltaInvReg = 1/deltaReg
+    "Inverse value of delta for inverseXRegularized";
+   final parameter Real aReg = -15*deltaInvReg
+    "Polynomial coefficient for inverseXRegularized";
+   final parameter Real bReg = 119*deltaInvReg^2
+    "Polynomial coefficient for inverseXRegularized";
+   final parameter Real cReg = -361*deltaInvReg^3
+    "Polynomial coefficient for inverseXRegularized";
+   final parameter Real dReg = 534*deltaInvReg^4
+    "Polynomial coefficient for inverseXRegularized";
+   final parameter Real eReg = -380*deltaInvReg^5
+    "Polynomial coefficient for inverseXRegularized";
+   final parameter Real fReg = 104*deltaInvReg^6
+    "Polynomial coefficient for inverseXRegularized";
 
   // Conditional connectors
   Modelica.Blocks.Interfaces.RealInput mWat_flow_internal(unit="kg/s")
@@ -151,9 +160,8 @@ equation
   // if the input connectors mWat_flow or C_flow are enabled.
   if use_m_flowInv then
     m_flowInv = Annex60.Utilities.Math.Functions.inverseXRegularized(
-                       x=m_flow,delta=deltaReg);
-//                        , deltaInv=deltaInvReg,
-//                        a=aReg, b=bReg, c=cReg, d=dReg, e=eReg, f=fReg);
+                       x=m_flow,delta=deltaReg,  deltaInv=deltaInvReg,
+                        a=aReg, b=bReg, c=cReg, d=dReg, e=eReg, f=fReg);
   else
     // m_flowInv is not used.
     m_flowInv = 0;
@@ -184,6 +192,7 @@ equation
       // This equation is approximate since m_flow = port_a.m_flow is used for the mass flow rate
       // at both ports. Since mWat_flow_internal << m_flow, the error is small.
       if prescribedHeatFlowRate then
+        assert(abs(Q_flow)<Q_flow_small or max(ports.m_flow)>deltaReg, "Model does not conserve energy since heat flow rate Q = " + String(Q_flow) + " exists when m_flow = " + String(m_flow)+ " is small");
         ports[i].h_outflow = (sum({ inStream(ports[j].h_outflow) * max(eps,ports[j].m_flow) for j in cat(1,1:i-1, i+1:nPorts)})+ Q_flow) * m_flowInv;
       else
         // Case with prescribedHeatFlowRate == false.
