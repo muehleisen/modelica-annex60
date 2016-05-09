@@ -25,10 +25,10 @@ model MixingVolumeZeroFlowMultiPort
     redeclare package Medium = Medium,
     control_m_flow=true,
     m_flow_small=0.001) "Mass flow source"
-    annotation (Placement(transformation(extent={{-40,-90},{-60,-70}})));
+    annotation (Placement(transformation(extent={{-38,-90},{-58,-70}})));
   Modelica.Blocks.Sources.Pulse doubleRamp(period=1)
     "Step function for mass flow source"
-    annotation (Placement(transformation(extent={{-80,60},{-60,80}})));
+    annotation (Placement(transformation(extent={{-80,30},{-60,50}})));
   Annex60.Fluid.MixingVolumes.MixingVolume vol1(
     redeclare package Medium = Medium,
     m_flow_nominal=1,
@@ -103,27 +103,22 @@ model MixingVolumeZeroFlowMultiPort
     redeclare package Medium = Medium,
     control_m_flow=true,
     m_flow_small=0.001) "Mass flow source"
-    annotation (Placement(transformation(extent={{20,-60},{40,-40}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow(
-    Q_flow=1,
-    final alpha=0) "Fixed heat flow rate" annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-10,50})));
+    annotation (Placement(transformation(extent={{22,-60},{42,-40}})));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow
+    annotation (Placement(transformation(extent={{-34,-40},{-14,-20}})));
 equation
   connect(doubleRamp.y, idealSource.m_flow_in)
-    annotation (Line(points={{-59,70},{-44,70},{-44,-72}}, color={0,0,127}));
-  connect(idealSource.port_a, vol.ports[1]) annotation (Line(points={{-40,-80},{
-          -20,-80},{-3,-80}}, color={0,127,255}));
+    annotation (Line(points={{-59,40},{-42,40},{-42,-72}}, color={0,0,127}));
+  connect(idealSource.port_a, vol.ports[1]) annotation (Line(points={{-38,-80},
+          {-38,-80},{-3,-80}},color={0,127,255}));
   connect(cosine1.y, bou.T_in)
     annotation (Line(points={{81,70},{90,70},{90,42}}, color={0,0,127}));
-  connect(idealSource.port_b, vol1.ports[1]) annotation (Line(points={{-60,-80},
+  connect(idealSource.port_b, vol1.ports[1]) annotation (Line(points={{-58,-80},
           {-80,-80},{-80,-68}}, color={0,127,255}));
   connect(vol1.ports[2], vol.ports[2]) annotation (Line(points={{-80,-72},{-80,-72},
           {-80,-50},{-1,-50},{-1,-80}}, color={0,127,255}));
   connect(idealSource1.m_flow_in, doubleRamp.y)
-    annotation (Line(points={{-44,-12},{-44,70},{-59,70}}, color={0,0,127}));
+    annotation (Line(points={{-44,-12},{-44,40},{-59,40}}, color={0,0,127}));
   connect(bou.ports[1], vol2.ports[1]) annotation (Line(points={{88,20},{88,20},
           {88,-80},{52.6667,-80}}, color={0,127,255}));
   connect(vol2.ports[2], vol.ports[3])
@@ -138,21 +133,24 @@ equation
   connect(vol4.ports[2], vol3.ports[3]) annotation (Line(points={{-80,-2},{-80,20},
           {1,20},{1,-20}}, color={0,127,255}));
   connect(idealSource2.m_flow_in, doubleRamp.y)
-    annotation (Line(points={{24,28},{24,70},{-59,70}}, color={0,0,127}));
-  connect(vol.ports[4], idealSource3.port_a) annotation (Line(points={{3,-80},{2,
-          -80},{2,-50},{20,-50}}, color={0,127,255}));
-  connect(idealSource3.port_b, vol5.ports[1]) annotation (Line(points={{40,-50},
+    annotation (Line(points={{24,28},{24,40},{-59,40}}, color={0,0,127}));
+  connect(vol.ports[4], idealSource3.port_a) annotation (Line(points={{3,-80},{
+          2,-80},{2,-50},{22,-50}},
+                                  color={0,127,255}));
+  connect(idealSource3.port_b, vol5.ports[1]) annotation (Line(points={{42,-50},
           {62.6667,-50},{62.6667,20}}, color={0,127,255}));
   connect(vol5.ports[2], bou.ports[2])
     annotation (Line(points={{60,20},{86,20},{84,20}}, color={0,127,255}));
-  connect(idealSource3.m_flow_in, idealSource2.m_flow_in)
-    annotation (Line(points={{24,-42},{24,28}}, color={0,0,127}));
   connect(idealSource2.port_a, vol3.ports[4]) annotation (Line(points={{20,20},{
           4,20},{4,-20},{3,-20}}, color={0,127,255}));
   connect(idealSource2.port_b, vol5.ports[3])
     annotation (Line(points={{40,20},{57.3333,20}}, color={0,127,255}));
-  connect(fixedHeatFlow.port, vol3.heatPort)
-    annotation (Line(points={{-10,40},{-10,40},{-10,-30}}, color={191,0,0}));
+  connect(idealSource3.m_flow_in, doubleRamp.y) annotation (Line(points={{26,
+          -42},{26,-42},{26,40},{-59,40}}, color={0,0,127}));
+  connect(prescribedHeatFlow.port, vol3.heatPort)
+    annotation (Line(points={{-14,-30},{-12,-30},{-10,-30}}, color={191,0,0}));
+  connect(prescribedHeatFlow.Q_flow, doubleRamp.y)
+    annotation (Line(points={{-34,-30},{-34,40},{-59,40}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),
     experiment(StopTime=10),
