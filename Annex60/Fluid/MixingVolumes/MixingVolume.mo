@@ -11,7 +11,7 @@ equation
       points={{-19,88},{54,88},{54,16},{58,16}},
       color={0,0,127}));
   connect(QSen_flow.y, mulSteBal.Q_flow) annotation (Line(
-      points={{-19,88},{54,88},{54,48},{8,48}},
+      points={{-19,88},{2,88},{2,48},{8,48}},
       color={0,0,127}));
 
   annotation (

@@ -130,6 +130,10 @@ between the medium and an ambient temperature. Examples include an ideal electri
 a pump that rejects heat into the fluid stream, or a chiller that removes heat based on a performance curve.
 If the <code>heatPort</code> is not connected, then set <code>prescribedHeatFlowRate=true</code> as
 in this case, <code>heatPort.Q_flow=0</code>.
+When <code>prescribedHeatFlowRate=true</code> 
+an assert is added that checks if <code>heatPort.Q_flow=0</code> 
+when the mass flow rate equals zero, 
+since otherwise energy is not conserved.
 </li>
 <li>Set <code>prescribedHeatFlowRate=false</code> if there is heat flow at the <code>heatPort</code>
 computed as <i>K * (T-heatPort.T)</i>, for some temperature <i>T</i> and some conductance <i>K</i>,
