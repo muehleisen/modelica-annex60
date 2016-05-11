@@ -8,7 +8,7 @@ model MixingVolumeZeroFlow
     redeclare package Medium = Medium,
     m_flow_nominal=1,
     V=1,
-    prescribedHeatFlowRate=false,
+    prescribedHeatFlowRate=true,
     energyDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
     massDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
     allowFlowReversal=false)

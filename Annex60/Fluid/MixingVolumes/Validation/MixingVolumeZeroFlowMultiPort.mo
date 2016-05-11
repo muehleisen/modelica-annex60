@@ -26,7 +26,8 @@ model MixingVolumeZeroFlowMultiPort
     control_m_flow=true,
     m_flow_small=0.001) "Mass flow source"
     annotation (Placement(transformation(extent={{-38,-90},{-58,-70}})));
-  Modelica.Blocks.Sources.Pulse doubleRamp(period=1)
+  Modelica.Blocks.Sources.SawTooth
+                                doubleRamp(period=1, amplitude=1e-6)
     "Step function for mass flow source"
     annotation (Placement(transformation(extent={{-80,30},{-60,50}})));
   Annex60.Fluid.MixingVolumes.MixingVolume vol1(
