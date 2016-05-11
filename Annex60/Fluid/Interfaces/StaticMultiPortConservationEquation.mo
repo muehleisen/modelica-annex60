@@ -3,15 +3,14 @@ model StaticMultiPortConservationEquation
   "Partial model for static energy and mass conservation equations"
 
   replaceable package Medium =
-      Modelica.Media.Interfaces.PartialMedium "Medium in the component"
-      annotation (choicesAllMatching = true);
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+    annotation (choicesAllMatching = true);
   parameter Modelica.SIunits.MassFlowRate m_flow_nominal
     "Nominal mass flow rate"
     annotation(Dialog(group = "Nominal condition"));
   parameter Modelica.SIunits.MassFlowRate m_flow_small(min=0) = 1E-4*abs(m_flow_nominal)
     "Small mass flow rate for regularization of zero flow"
     annotation(Dialog(tab = "Advanced"));
-    // Port definitions
   parameter Integer nPorts(min=3)=3 "Number of ports"
     annotation(Evaluate=true, Dialog(connectorSizing=true, tab="General",group="Ports"));
 
@@ -29,73 +28,95 @@ model StaticMultiPortConservationEquation
     "Set to true to enable input connector for trace substance"
     annotation(Evaluate=true, Dialog(tab="Advanced"));
 
-  constant Modelica.SIunits.MassFlowRate eps = 1e-10
+  constant Modelica.SIunits.MassFlowRate eps = 1e-7
     "Constant for regularising mass flow rates";
 
+  constant Modelica.SIunits.Temperature dT_reg = 100
+    "Maximum allowable temperature increase for m_flow=0 regularisation";
+
   parameter Modelica.SIunits.HeatFlowRate Q_flow_small = deltaReg * cp_default/1E3
-    "Small heat flow rate for checkign conservation of energy";
+    "Small heat flow rate for verifying conservation of energy";
 
-  Modelica.Blocks.Interfaces.RealInput Q_flow(unit="W")
+Modelica.Fluid.Vessels.BaseClasses.VesselFluidPorts_b ports[nPorts](
+    redeclare each final package Medium = Medium) "Fluid inlets and outlets"
+  annotation (Placement(transformation(extent={{-40,-10},{40,10}},
+    origin={0,-100},
+      rotation=0)));
+
+Modelica.Blocks.Interfaces.RealInput Q_flow(unit="W")
     "Sensible plus latent heat flow rate transferred into the medium"
-    annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
-  Modelica.Blocks.Interfaces.RealInput mWat_flow(final quantity="MassFlowRate",
-                                                 unit="kg/s") if
-       use_mWat_flow "Moisture mass flow rate added to the medium"
-    annotation (Placement(transformation(extent={{-140,20},{-100,60}})));
-  Modelica.Blocks.Interfaces.RealInput[Medium.nC] C_flow if
-       use_C_flow "Trace substance mass flow rate added to the medium"
-    annotation (Placement(transformation(extent={{-140,-60},{-100,-20}})));
+  annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
+Modelica.Blocks.Interfaces.RealInput mWat_flow(final quantity="MassFlowRate",
+                                               unit="kg/s") if
+     use_mWat_flow "Moisture mass flow rate added to the medium"
+  annotation (Placement(transformation(extent={{-140,20},{-100,60}})));
+Modelica.Blocks.Interfaces.RealInput[Medium.nC] C_flow if
+     use_C_flow "Trace substance mass flow rate added to the medium"
+  annotation (Placement(transformation(extent={{-140,-60},{-100,-20}})));
 
-  // Outputs that are needed in models that extend this model
-  Modelica.Blocks.Interfaces.RealOutput hOut(unit="J/kg",
-                                             start=Medium.specificEnthalpy_pTX(
-                                                     p=Medium.p_default,
-                                                     T=Medium.T_default,
-                                                     X=Medium.X_default))
+// Outputs that are needed in models that extend this model
+Modelica.Blocks.Interfaces.RealOutput hOut(unit="J/kg",
+                                           start=Medium.specificEnthalpy_pTX(
+                                                   p=Medium.p_default,
+                                                   T=Medium.T_default,
+                                                   X=Medium.X_default))
     "Leaving specific enthalpy of the component"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={-50,110}), iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={-50,110})));
+  annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+      rotation=90,
+      origin={-50,110}), iconTransformation(
+      extent={{-10,-10},{10,10}},
+      rotation=90,
+      origin={-50,110})));
 
-  Modelica.Blocks.Interfaces.RealOutput XiOut[Medium.nXi](each unit="1",
-                                                          each min=0,
-                                                          each max=1)
+Modelica.Blocks.Interfaces.RealOutput XiOut[Medium.nXi](each unit="1",
+                                                        each min=0,
+                                                        each max=1)
     "Leaving species concentration of the component"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={0,110})));
-  Modelica.Blocks.Interfaces.RealOutput COut[Medium.nC](each min=0)
+  annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+      rotation=90,
+      origin={0,110})));
+Modelica.Blocks.Interfaces.RealOutput COut[Medium.nC](each min=0)
     "Leaving trace substances of the component"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={50,110})));
+  annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+      rotation=90,
+      origin={50,110})));
 
 protected
   final parameter Boolean use_m_flowInv=
-    (prescribedHeatFlowRate or use_mWat_flow or use_C_flow)
+  (prescribedHeatFlowRate or use_mWat_flow or use_C_flow)
     "Flag, true if m_flowInv is used in the model"
-    annotation (Evaluate=true);
+  annotation (Evaluate=true);
   final parameter Real s[Medium.nXi] = {if Modelica.Utilities.Strings.isEqual(string1=Medium.substanceNames[i],
-                                            string2="Water",
-                                            caseSensitive=false)
-                                            then 1 else 0 for i in 1:Medium.nXi}
+                                          string2="Water",
+                                          caseSensitive=false)
+                                          then 1 else 0 for i in 1:Medium.nXi}
     "Vector with zero everywhere except where species is";
   final parameter Medium.ThermodynamicState state_default = Medium.setState_pTX(
-      T=Medium.T_default,
-      p=Medium.p_default,
-      X=Medium.X_default[1:Medium.nXi]) "Medium state at default values";
+    T=Medium.T_default,
+    p=Medium.p_default,
+    X=Medium.X_default[1:Medium.nXi]) "Medium state at default values";
   // Density at medium default values, used to compute the size of control volumes
   final parameter Modelica.SIunits.SpecificHeatCapacity cp_default=Medium.specificHeatCapacityCp(
-    state=state_default) "Density, used to compute fluid mass";
+  state=state_default) "Density, used to compute fluid mass";
 
   Real m_flowInv(unit="s/kg") "Regularization of 1/m_flow of port_a";
-
   Modelica.SIunits.MassFlowRate mXi_flow[Medium.nXi]
     "Mass flow rates of independent substances added to the medium";
   Modelica.SIunits.MassFlowRate m_flow "Total inlet mass flow rates";
+
+  // Regularisation variables below are based on, but not identical to:
+  // Franke, R., Casella, F., Otter, M., Sielemann, M., Elmqvist, H., Mattson, S. E., & Olsson, H. (2009).
+  // Stream Connectors – An Extension of Modelica for Device-Oriented Modeling of Convective Transport Phenomena, 108–121. doi:10.3384/ecp09430078
+  Real alpha(min=0, max=1) = (if m_flow>eps then 1 else (if m_flow>0 then (3-2*m_flow/eps)*(m_flow/eps)^2 else 0))
+    "Variable for linearly interpolating";
+  Modelica.SIunits.MassFlowRate posMaxMflow[nPorts] = {max(0,ports[i].m_flow) for i in 1:nPorts}
+    "Regularised mass flow rates";
+  Modelica.SIunits.MassFlowRate posMaxMflowReg[nPorts] = {posMaxMflow[i]*alpha + (1-alpha)*eps for i in 1:nPorts}
+    "Regularised mass flow rates";
+  Modelica.SIunits.MassFlowRate sumposMaxMflowReg = sum(posMaxMflowReg)
+    "Sum of regularised mass flow rates";
+  Real posMaxMflowRegNorm[nPorts] = posMaxMflowReg./sum(posMaxMflowReg)
+    "Normalised fractions of mass flow rates";
 
   // Parameters for inverseXRegularized.
   // These are assigned here for efficiency reason.
@@ -103,20 +124,19 @@ protected
   // the function is invocated.
   final parameter Real deltaReg = m_flow_small/1E3
     "Smoothing region for inverseXRegularized";
-
-   final parameter Real deltaInvReg = 1/deltaReg
+  final parameter Real deltaInvReg = 1/deltaReg
     "Inverse value of delta for inverseXRegularized";
-   final parameter Real aReg = -15*deltaInvReg
+  final parameter Real aReg = -15*deltaInvReg
     "Polynomial coefficient for inverseXRegularized";
-   final parameter Real bReg = 119*deltaInvReg^2
+  final parameter Real bReg = 119*deltaInvReg^2
     "Polynomial coefficient for inverseXRegularized";
-   final parameter Real cReg = -361*deltaInvReg^3
+  final parameter Real cReg = -361*deltaInvReg^3
     "Polynomial coefficient for inverseXRegularized";
-   final parameter Real dReg = 534*deltaInvReg^4
+  final parameter Real dReg = 534*deltaInvReg^4
     "Polynomial coefficient for inverseXRegularized";
-   final parameter Real eReg = -380*deltaInvReg^5
+  final parameter Real eReg = -380*deltaInvReg^5
     "Polynomial coefficient for inverseXRegularized";
-   final parameter Real fReg = 104*deltaInvReg^6
+  final parameter Real fReg = 104*deltaInvReg^6
     "Polynomial coefficient for inverseXRegularized";
 
   // Conditional connectors
@@ -124,12 +144,7 @@ protected
     "Needed to connect to conditional connector";
   Modelica.Blocks.Interfaces.RealInput C_flow_internal[Medium.nC]
     "Needed to connect to conditional connector";
-public
-  Modelica.Fluid.Vessels.BaseClasses.VesselFluidPorts_b ports[nPorts](
-      redeclare each final package Medium = Medium) "Fluid inlets and outlets"
-    annotation (Placement(transformation(extent={{-40,-10},{40,10}},
-      origin={0,-100},
-        rotation=0)));
+
 initial equation
   // Assert that the substance with name 'water' has been found.
   assert(Medium.nXi == 0 or abs(sum(s)-1) < 1e-5,
@@ -143,7 +158,6 @@ equation
   if not use_mWat_flow then
     mWat_flow_internal = 0;
   end if;
-
   connect(C_flow, C_flow_internal);
   if not use_C_flow then
     C_flow_internal = zeros(Medium.nC);
@@ -152,8 +166,8 @@ equation
   // Species flow rate from connector mWat_flow
   mXi_flow = mWat_flow_internal * s;
 
-  // Total inlet mass flow rate
-  m_flow=sum({ max(eps, ports[i].m_flow) for i in 1:nPorts});
+  // Total entering mass flow rate
+  m_flow=sum({posMaxMflow[i] for i in 1:nPorts});
 
   // Regularization of m_flow around the origin to avoid a division by zero
   // m_flowInv is only used if prescribedHeatFlowRate == true, or
@@ -167,46 +181,36 @@ equation
     m_flowInv = 0;
   end if;
 
-    hOut =  ports[1].h_outflow;
-    XiOut = ports[1].Xi_outflow;
-    COut =  ports[1].C_outflow;
-
   //////////////////////////////////////////////////////////////////////////////////////////
-  // Energy balance and mass balance
+  // Balance equations
 
-    // Mass balance (no storage)
-    sum(ports.m_flow) = if simplify_mWat_flow then 0 else -mWat_flow_internal;
+  // Mass balance (no storage)
+  sum(ports.m_flow) = if simplify_mWat_flow then 0 else -mWat_flow_internal;
 
-    assert(use_m_flowInv or use_mWat_flow == false, "Wrong implementation for forward flow.");
-    assert(not use_C_flow or use_m_flowInv, "Wrong implementation of trace substance balance for forward flow.");
+  for i in 1:nPorts loop
+    // Energy balance.
+    // This equation is approximate since m_flow = port_a.m_flow is used for the mass flow rate
+    // at both ports. Since mWat_flow_internal << m_flow, the error is small.
+    if prescribedHeatFlowRate then
+      ports[i].h_outflow = (sum({ inStream(ports[j].h_outflow) * posMaxMflowReg[j] for j in cat(1,1:i-1, i+1:nPorts)})+ Q_flow) /sumposMaxMflowReg;
+    else
+      // Case with prescribedHeatFlowRate == false.
+      // port_b.h_outflow is known and the equation needs to be solved for Q_flow.
+      // Hence, we cannot use m_flowInv as for m_flow=0, any Q_flow would satisfiy
+      // Q_flow * m_flowInv = 0.
+      // The same applies for port_b.Xi_outflow and mXi_flow.
+      sumposMaxMflowReg*ports[i].h_outflow = sum({ inStream(ports[j].h_outflow) * posMaxMflowReg[j] for j in cat(1,1:i-1, i+1:nPorts)})+ Q_flow;
+    end if;
 
-    for i in 1:nPorts loop
-      for k in 1:Medium.nXi loop
-      // Substance balance
-        ports[i].Xi_outflow[k] = (sum({ inStream(ports[j].Xi_outflow[k]) * max(eps,ports[j].m_flow) for j in cat(1,1:i-1, i+1:nPorts)})+ (if use_m_flowInv then mXi_flow[k] else 0)) * m_flowInv;
-      end for;
+    // Substance balance
+    for k in 1:Medium.nXi loop
+      ports[i].Xi_outflow[k] = (sum({ inStream(ports[j].Xi_outflow[k]) * posMaxMflowReg[j] for j in cat(1,1:i-1, i+1:nPorts)})+ (if use_m_flowInv then mXi_flow[k] else 0)) /sumposMaxMflowReg;
     end for;
 
-    for i in 1:nPorts loop
-      // Energy balance.
-      // This equation is approximate since m_flow = port_a.m_flow is used for the mass flow rate
-      // at both ports. Since mWat_flow_internal << m_flow, the error is small.
-      if prescribedHeatFlowRate then
-        assert(abs(Q_flow)<Q_flow_small or max(ports.m_flow)>deltaReg, "Model does not conserve energy since heat flow rate Q = " + String(Q_flow) + " exists when m_flow = " + String(m_flow)+ " is small");
-        ports[i].h_outflow = (sum({ inStream(ports[j].h_outflow) * max(eps,ports[j].m_flow) for j in cat(1,1:i-1, i+1:nPorts)})+ Q_flow) * m_flowInv;
-      else
-        // Case with prescribedHeatFlowRate == false.
-        // port_b.h_outflow is known and the equation needs to be solved for Q_flow.
-        // Hence, we cannot use m_flowInv as for m_flow=0, any Q_flow would satisfiy
-        // Q_flow * m_flowInv = 0.
-        // The same applies for port_b.Xi_outflow and mXi_flow.
-        m_flow*ports[i].h_outflow = sum({ inStream(ports[j].h_outflow) * max(eps,ports[j].m_flow) for j in cat(1,1:i-1, i+1:nPorts)})+ Q_flow;
-      end if;
-
-      // Transport of trace substances
-      for k in 1:Medium.nC loop
-        ports[i].C_outflow[k] = sum({ inStream(ports[j].C_outflow[k]) * max(eps,ports[j].m_flow) for j in cat(1,1:i-1, i+1:nPorts)})+ (if use_m_flowInv and use_C_flow then C_flow_internal[k] else 0) * m_flowInv;
-      end for;
+    // Transport of trace substances
+    for k in 1:Medium.nC loop
+      ports[i].C_outflow[k]  = (sum({ inStream(ports[j].C_outflow[k]) * posMaxMflowReg[j] for j in cat(1,1:i-1, i+1:nPorts)})+ (if use_m_flowInv and use_C_flow then C_flow_internal[k] else 0)) /sumposMaxMflowReg;
+    end for;
   end for;
 
   ////////////////////////////////////////////////////////////////////////////
@@ -215,9 +219,29 @@ equation
     ports[i].p = ports[1].p;
   end for;
 
-  annotation (
-    preferredView="info",
-    Documentation(info="<html>
+  ////////////////////////////////////////////////////////////////////////////
+  // Computation of model output variables
+  if prescribedHeatFlowRate then
+    hOut =  (inStream(ports.h_outflow)*posMaxMflow + Q_flow)*m_flowInv;
+  else
+    hOut*m_flow =  inStream(ports.h_outflow)*posMaxMflow + Q_flow;
+  end if;
+  for i in 1:Medium.nXi loop
+    XiOut[i] = inStream(ports.Xi_outflow[i])*posMaxMflowRegNorm;
+  end for;
+  for i in 1:Medium.nC loop
+    COut[i] =  inStream(ports.C_outflow[i])*posMaxMflowRegNorm;
+  end for;
+
+  //////////////////////////////////////////////////////////////////////////////////////////
+  // Asserts checking model validity
+  assert(use_m_flowInv or not use_mWat_flow, "Wrong implementation for forward flow.");
+  assert(use_m_flowInv or not use_C_flow, "Wrong implementation of trace substance balance for forward flow.");
+  assert(not prescribedHeatFlowRate or abs(Q_flow)<=cp_default*sumposMaxMflowReg*dT_reg or max(ports.m_flow)>deltaReg, "Model does not conserve energy since heat flow rate Q = " + String(Q_flow) + " exists when m_flow = " + String(m_flow)+ " is small");
+
+annotation (
+  preferredView="info",
+  Documentation(info="<html>
 <p>
 This model transports fluid between its ports, without storing mass or energy.
 It implements a steady-state conservation equation for energy and mass fractions.
@@ -306,8 +330,8 @@ For a model with a static balance and two ports, use
 <a href=\"modelica://Annex60.Fluid.Interfaces.StaticTwoPortConservationEquation\">
 Annex60.Fluid.Interfaces.StaticTwoPortConservationEquation</a>.
 </p>
-</html>",
-revisions="<html>
+</html>", revisions=
+        "<html>
 <ul>
 <li>
 May 3, 2016 by Filip Jorissen:<br/>
@@ -316,49 +340,49 @@ issue 445</a>.
 </li>
 </ul>
 </html>"),
-    Icon(coordinateSystem(
-        preserveAspectRatio=true,
-        extent={{-100,-100},{100,100}},
-        grid={1,1}), graphics={Rectangle(
-          extent={{-100,100},{100,-100}},
-          fillColor={135,135,135},
-          fillPattern=FillPattern.Solid,
-          pattern=LinePattern.None),
-        Text(
-          extent={{-93,72},{-58,89}},
-          lineColor={0,0,127},
-          textString="Q_flow"),
-        Text(
-          extent={{-93,37},{-58,54}},
-          lineColor={0,0,127},
-          textString="mWat_flow"),
-        Text(
-          extent={{-41,103},{-10,117}},
-          lineColor={0,0,127},
-          textString="hOut"),
-        Text(
-          extent={{10,103},{41,117}},
-          lineColor={0,0,127},
-          textString="XiOut"),
-        Text(
-          extent={{61,103},{92,117}},
-          lineColor={0,0,127},
-          textString="COut"),
-        Line(points={{-42,55},{-42,-84}}, color={255,255,255}),
-        Polygon(
-          points={{-42,67},{-50,45},{-34,45},{-42,67}},
-          lineColor={255,255,255},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          points={{87,-73},{65,-65},{65,-81},{87,-73}},
-          lineColor={255,255,255},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
-        Line(points={{-56,-73},{81,-73}}, color={255,255,255}),
-        Line(points={{6,14},{6,-37}},     color={255,255,255}),
-        Line(points={{54,14},{6,14}},     color={255,255,255}),
-        Line(points={{6,-37},{-42,-37}},  color={255,255,255})}),
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
-            100,100}})));
+  Icon(coordinateSystem(
+      preserveAspectRatio=true,
+      extent={{-100,-100},{100,100}},
+      grid={1,1}), graphics={Rectangle(
+        extent={{-100,100},{100,-100}},
+        fillColor={135,135,135},
+        fillPattern=FillPattern.Solid,
+        pattern=LinePattern.None),
+      Text(
+        extent={{-93,72},{-58,89}},
+        lineColor={0,0,127},
+        textString="Q_flow"),
+      Text(
+        extent={{-93,37},{-58,54}},
+        lineColor={0,0,127},
+        textString="mWat_flow"),
+      Text(
+        extent={{-41,103},{-10,117}},
+        lineColor={0,0,127},
+        textString="hOut"),
+      Text(
+        extent={{10,103},{41,117}},
+        lineColor={0,0,127},
+        textString="XiOut"),
+      Text(
+        extent={{61,103},{92,117}},
+        lineColor={0,0,127},
+        textString="COut"),
+      Line(points={{-42,55},{-42,-84}}, color={255,255,255}),
+      Polygon(
+        points={{-42,67},{-50,45},{-34,45},{-42,67}},
+        lineColor={255,255,255},
+        fillColor={255,255,255},
+        fillPattern=FillPattern.Solid),
+      Polygon(
+        points={{87,-73},{65,-65},{65,-81},{87,-73}},
+        lineColor={255,255,255},
+        fillColor={255,255,255},
+        fillPattern=FillPattern.Solid),
+      Line(points={{-56,-73},{81,-73}}, color={255,255,255}),
+      Line(points={{6,14},{6,-37}},     color={255,255,255}),
+      Line(points={{54,14},{6,14}},     color={255,255,255}),
+      Line(points={{6,-37},{-42,-37}},  color={255,255,255})}),
+  Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
+          100,100}})));
 end StaticMultiPortConservationEquation;
