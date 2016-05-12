@@ -17,6 +17,8 @@ model StaticTwoPortConservationEquation
     "Set to true to enable input connector for trace substance"
     annotation(Evaluate=true, Dialog(tab="Advanced"));
 
+  constant Modelica.SIunits.Temperature dT_reg = 100
+    "Maximum temperature increase due to Q_flow when m_flow is near 0";
   Modelica.Blocks.Interfaces.RealInput Q_flow(unit="W")
     "Sensible plus latent heat flow rate transferred into the medium"
     annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
@@ -65,6 +67,13 @@ protected
                                             caseSensitive=false)
                                             then 1 else 0 for i in 1:Medium.nXi}
     "Vector with zero everywhere except where species is";
+  final parameter Medium.ThermodynamicState state_default = Medium.setState_pTX(
+      T=Medium.T_default,
+      p=Medium.p_default,
+      X=Medium.X_default[1:Medium.nXi]) "Medium state at default values";
+  final parameter Modelica.SIunits.SpecificHeatCapacity cp_default=Medium.specificHeatCapacityCp(
+    state=state_default)
+    "Heat capacity, used to compute heat flow rate limit at zero flow";
 
   Real m_flowInv(unit="s/kg") "Regularization of 1/m_flow of port_a";
 
@@ -186,6 +195,7 @@ equation
     // This equation is approximate since m_flow = port_a.m_flow is used for the mass flow rate
     // at both ports. Since mWat_flow_internal << m_flow, the error is small.
     if prescribedHeatFlowRate then
+      assert(abs(Q_flow) < dT_reg*cp_default*(abs(m_flow)+1e-10) or abs(m_flow)>deltaReg, "Model does not conserve energy since heat flow rate Q = " + String(Q_flow) + " exists when m_flow = " + String(m_flow)+ " is small");
       port_b.h_outflow = inStream(port_a.h_outflow) + Q_flow * m_flowInv;
       if allowFlowReversal then
         port_a.h_outflow = inStream(port_b.h_outflow) - Q_flow * m_flowInv;
@@ -317,6 +327,11 @@ Annex60.Fluid.Interfaces.ConservationEquation</a>.
 </html>",
 revisions="<html>
 <ul>
+<li>
+May 13, 2016, by Filip Jorissen:<br/>
+Added assertion for checking conservation of energy when having 
+<code>prescribedHeatFlowRate=true</code> around zero flow.
+</li>
 <li>
 March 17, 2016, by Michael Wetter:<br/>
 Refactored model and implmented <code>regStep</code> instead of <code>spliceFunction</code>.

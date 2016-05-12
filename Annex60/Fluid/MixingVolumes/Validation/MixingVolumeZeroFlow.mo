@@ -89,8 +89,6 @@ model MixingVolumeZeroFlow
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow preHea1
     "Prescribed heat flow"
     annotation (Placement(transformation(extent={{-40,70},{-20,90}})));
-  Modelica.Blocks.Sources.Constant const(k=1) "Constant heat flow rate input"
-    annotation (Placement(transformation(extent={{-76,74},{-64,86}})));
   Annex60.Fluid.MixingVolumes.MixingVolume volQflow(
     nPorts=2,
     redeclare package Medium = Medium,
@@ -141,8 +139,6 @@ equation
   connect(volNonLinSys.heatPort, preHea2.port) annotation (Line(points={{-10,-10},
           {-10,-10},{-14,-10},{-14,60},{-20,60}},
                                               color={191,0,0}));
-  connect(const.y, preHea1.Q_flow) annotation (Line(points={{-63.4,80},{-63.4,
-          80},{-40,80}}, color={0,0,127}));
   connect(volQflow.heatPort, preHea1.port)
     annotation (Line(points={{-10,20},{-10,80},{-20,80}}, color={191,0,0}));
   connect(sou1.ports[1], volQflow.ports[1]) annotation (Line(points={{-40,10},{
@@ -165,9 +161,11 @@ equation
           -46},{-62,-46}}, color={0,0,127}));
   connect(ramp_T.y, sou4.T_in) annotation (Line(points={{-79,-50},{-68,-50},{-68,
           -86},{-62,-86}}, color={0,0,127}));
+  connect(preHea1.Q_flow, ramp_m_flow.y)
+    annotation (Line(points={{-40,80},{-79,80},{-79,-10}}, color={0,0,127}));
   annotation (                                                         Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
-                    graphics={Text(
+        coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
+            100}}), graphics={Text(
           extent={{12,30},{106,10}},
           lineColor={28,108,200},
           textString="<- vol.prescribedHeatFlowRate = true")}),
@@ -175,6 +173,12 @@ equation
       StopTime=2),
     Documentation(revisions="<html>
 <ul>
+<li>
+May 13, 2016, by Filip Jorissen;<br/>
+Changed prescribed heat flow rate for volQflow such that 
+this example does not trigger an assertion error for conservation
+of energy.
+</li>
 <li>
 January 27, 2016, by Michael Wetter;<br/>
 Removed algorithm specification in experiment annotation.
