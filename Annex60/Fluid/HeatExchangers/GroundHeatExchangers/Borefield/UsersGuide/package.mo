@@ -1,4 +1,4 @@
-﻿within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield;
+within Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield;
 package UsersGuide "User's Guide"
   extends Modelica.Icons.Information;
 
