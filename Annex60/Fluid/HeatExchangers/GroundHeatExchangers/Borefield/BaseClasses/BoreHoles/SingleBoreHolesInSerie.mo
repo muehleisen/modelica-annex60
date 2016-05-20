@@ -3,7 +3,7 @@ model SingleBoreHolesInSerie
   "Single or double U-tube borehole heat exchanger model. If more than one borehole is given, they are assumed to be connected in series"
   extends
     Annex60.Fluid.HeatExchangers.GroundHeatExchangers.Borefield.BaseClasses.BoreHoles.Interface.PartialSingleBoreholeSerie(
-     redeclare BaseClasses.SingleBoreHoleUTube borHol);
+     redeclare BaseClasses.SingleBoreHoleUTube borHol[gen.nbSer]);
 
 equation
   assert(gen.singleUTube, "This borefield model is for single U-Tube configuration but you chose double U-Tube configuration in the general borefield record.");
@@ -107,7 +107,12 @@ the far-field temperature boundary condition.
 </html>", revisions="<html>
 <ul>
 <li>
-August 2011, by Pierre Vigouroux:<br>
+May 20, 2016, by Michael Wetter:<br/>
+Added declaration of array size in redeclare statement, which is needed for
+Dymola 2016 FD01.
+</li>
+<li>
+August 2011, by Pierre Vigouroux:<br/>
 First implementation.
 </li>
 </ul>
