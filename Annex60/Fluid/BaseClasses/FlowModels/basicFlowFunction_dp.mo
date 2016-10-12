@@ -18,7 +18,7 @@ algorithm
              elseif noEvent(dp<-dp_turbulent) then -k*sqrt(abs(-dp))
              else (k^2*5/4/m_flow_turbulent)*dp-k/4/(m_flow_turbulent/k)^5*dp^3;
 
-  annotation(LateInline=true,
+  annotation(Inline=true,
            smoothOrder=2,
            derivative(order=1, zeroDerivative=k, zeroDerivative=m_flow_turbulent)=
              Annex60.Fluid.BaseClasses.FlowModels.basicFlowFunction_dp_der,

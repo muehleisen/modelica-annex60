@@ -15,7 +15,7 @@ algorithm
       elseif (m_flow<-m_flow_turbulent) then -(m_flow/k)^2
       else (m_flow_turbulent*m_flow+m_flow^3/m_flow_turbulent)/2/k^2;
 
- annotation (LateInline=true,
+ annotation (Inline=true,
              smoothOrder=2,
              derivative(order=1, zeroDerivative=k, zeroDerivative=m_flow_turbulent)=
                Annex60.Fluid.BaseClasses.FlowModels.basicFlowFunction_m_flow_der,
